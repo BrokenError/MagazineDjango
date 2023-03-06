@@ -3,41 +3,33 @@
 {% load static %}
 {% csrf_token %}
 
-{% block title %}Каталог{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
 <div class="main">
-    <div class="example_work">
+    <div class="categories">
         <ul>
             {% for i in cat %}
-                <a href=""><li>i</li></a>
-            {% endfor %}   
-            <!-- <a href=""><li>Букеты</li></a>
-            <a href=""><li>Мягкие игрушки</li></a>
-            <a href=""><li>Декор</li></a>
-            <a href=""><li>Другое</li></a> -->
+                {% if i.title == cat_selected %}
+                    <a href="{% url i.title %}"><li class="categoies_selected">{{ i.title }}</li></a>
+                {% else %}
+                    <a href="{% url i.title %}"><li>{{ i.title }}</li></a>
+                {% endif %}
+            {% endfor %}
         </ul>
     </div>
     <div style="margin-top: 200px;">
-        <label style="margin: 0% 42%; height: 100px; width: 300px; font-size: 35px; font-weight: bold;">НАШИ УСЛУГИ</label><br>
-        <div class="services">
-            <div class="service_block">
-                <img src="{% static 'products/img/services/1.png' %}"><br>
-                <button>ПОДРОБНЕЕ</button>
-            </div>
-            <div class="service_block">
-                <img src="{% static 'products/img/services/2.png' %}"><br>
-                <button>ПОДРОБНЕЕ</button>
-            </div>
-            <div class="service_block">
-                <img src="{% static 'products/img/services/3.png' %}"><br>
-                <button>ПОДРОБНЕЕ</button>
-            </div>
-            <div class="service_block">
-                <img src="{% static 'products/img/services/4.png' %}"><br>
-                <button>ПОДРОБНЕЕ</button>
+        {% for i in prod %}
+        <div class="products">
+            <div class="products_img">
+                {{ i.photo }}
+                <img src="{% static 'i.photo' %}"><br>
+                <p>{{ i.title }}</p>
+                <p>{{ i.cost }}</p>
+                <button>В корзину</button>
             </div>
         </div>
+        {% endfor %}
     </div>
     <div>
 

@@ -2,6 +2,24 @@ body{
     background-color: #ffffff;
 }
 
+UL, li, ol{
+    margin: 0;
+    padding: 0;
+    color: black;
+    list-style-type: none;
+    text-decoration: none;
+    transform: none;
+}
+
+li:hover{
+    color: #FF1E44;
+    transform: scale(1.05);
+}
+
+a{
+    list-style: none;
+    text-decoration: none;
+}
 
 .header{
     width: 100%;
@@ -41,7 +59,6 @@ body{
 
 ul li:hover{
     color: #FF1E44;
-    text-decoration: none;
     transform: scale(1.05);
 }
 
@@ -54,14 +71,11 @@ ul li:hover{
     vertical-align: middle;
     color:#000000;
     font-size: 17px;
-    transform: none;
     margin: 0 20px;
 }
 
 .header a{
     vertical-align: middle;
-    list-style: none;
-    text-decoration: none;
 }
 
 .main{
@@ -133,4 +147,28 @@ ul li:hover{
     color: #FF1E44;
     text-decoration: none;
     transform: scale(1.05);
+}
+
+.categories{
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 0 300px;
+    background-color: f0efef;
+}
+
+.categories ul{
+    display: flex;
+    justify-content: space-between;
+}
+.categories ul li{
+    font-size: 20px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.categoies_selected{
+    color: #FF1E44;
+    font-weight:500;
+    transform: scale(1.05);
+    border-bottom: 1px #FF1E44 solid;
 }
