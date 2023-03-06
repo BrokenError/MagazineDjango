@@ -13,33 +13,47 @@
 </head>
 <body>
     <header class="header">
-        <a href="" style="height:50px"><label class="logo_text">BestFlowers</label></a>
+        <a href="{% url 'magazine_home' %}" style="height:50px"><label class="logo_text">BestFlowers</label></a>
         <div>
             <input type="text" placeholder="Поиск по сайту" style="width: 600px; height: 50px; border: none; padding-left: 10px;">
             <button style="border:none"><i class="fa-solid fa-magnifying-glass" style="font-size: 24px;"></i></button>
         </div>
         <ul class="header_links">
-            <a href=""><li><i class="fa-solid fa-bars"></i><br>Каталог</li></a>
-            <a href=""><li><i class="fa-solid fa-basket-shopping"></i><br>Корзина</li></a>
-            <a href=""><li><i class="fa-solid fa-user"></i><br> Войти</li></a>
+            <a href="{% url 'magazine_catalog' %}"><li><i class="fa-solid fa-bars"></i><br>Каталог</li></a>
+            <a href="{% url 'user_basket' %}"><li><i class="fa-solid fa-basket-shopping"></i><br>Корзина</li></a>
+            <a href="{% url 'user_login' %}"><li><i class="fa-solid fa-user"></i><br> Войти</li></a>
        </ul> 
     </header>
 
-    <div class="main">
-        <div class="example_work">
-            <img src="{% static 'products/img/example_work/1.png' %}">
-            <img src="{% static 'products/img/example_work/2.png' %}">
-            <img src="{% static 'products/img/example_work/3.png' %}">
+    {% block content %}
+    {% endblock %}
+    
+    <footer class="footer">
+        <div class="contacts">
+            <p>Контакты:</p>
+            <ul>
+                <li>----------------</li>
+                <li>----------------</li>
+                <li>----------------</li>
+            </ul>
         </div>
-        <div class="services">
-            <
+        <div class="addresses">
+            <p>Адреса магазинов:</p>
+            <ul>
+                <li>---------------</li>
+                <li>---------------</li>
+                <li>---------------</li>
+            </ul>
+        </div>
+        <div class="links">
+            <a href=""><i class="fa-brands fa-vk"></i></a>
+            <a href=""><i class="fa-brands fa-youtube"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-github"></i></a>
+        </div>
 
-        </div>
-        <main>
-            {% block content %}
-            {% endblock %}
-        </main>
-    </div>
+    </footer>
+
     <script src="https://kit.fontawesome.com/dbdf0449d7.js" crossorigin="anonymous"></script>
 </body>
 </html>

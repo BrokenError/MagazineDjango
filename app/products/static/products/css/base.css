@@ -4,11 +4,16 @@ body{
 
 
 .header{
+    width: 100%;
     vertical-align: middle;
     padding: 20px 85px;
     display: flex;
-    background-color: #f0efef;
     justify-content: space-between;
+    background-color: #f0efef;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
 }
 
 .header_left{
@@ -30,12 +35,11 @@ body{
 }
 
 .header_links i{
-    color:#000000;
     font-size: 28px;
     margin: 0 28%;
 }
 
-ul li:hover, i:hover{
+ul li:hover{
     color: #FF1E44;
     text-decoration: none;
     transform: scale(1.05);
@@ -63,6 +67,7 @@ ul li:hover, i:hover{
 .main{
     margin: 100px 140px;
     height: 1640px;
+    justify-content: space-between;
 }
 
 .example_work{
@@ -73,4 +78,59 @@ ul li:hover, i:hover{
 
 .example_work img{
     height: 500px;
+}
+
+.services{
+    display: flex;
+    justify-content: space-between;
+}
+
+.services div{
+    height: 450px;
+    width: 350px;
+}
+
+.service_block{
+    display: flex;
+    flex-direction: column;
+}
+
+.service_block button{
+    border-color: #C3C3C3;
+    margin: 0 auto;
+    height: 50px;
+    width: 200px;
+    color: black;
+    background-color: #f0efef;
+}
+
+
+.footer{
+    padding: 20px 140px;
+    height: 200px;
+    background-color: #f0efef;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contacts{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.addresses{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.links i{
+    margin: 50px 20px ;
+    font-size: 35px;
+    color: black;
+}
+
+.links i:hover{
+    color: #FF1E44;
+    text-decoration: none;
+    transform: scale(1.05);
 }
