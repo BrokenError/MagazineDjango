@@ -18,17 +18,23 @@
             {% endfor %}
         </ul>
     </div>
-    <div style="margin-top: 200px;">
+    <div style="margin-top: 200px; display: block;">
         {% for i in prod %}
-        <div class="products">
-            <div class="products_img">
-                {{ i.photo }}
-                <img src="{% static 'i.photo' %}"><br>
-                <p>{{ i.title }}</p>
-                <p>{{ i.cost }}</p>
-                <button>В корзину</button>
-            </div>
-        </div>
+            {% if count == 0 or count < 4 %}
+                <div class="products">
+                    <div class="products_img">
+                        <p><img src="{{ i.photo.url }}"></p>
+                        {{ i.photo }}
+                        <p>{{ i.title }}</p>
+                        <p>{{ i.cost }}</p>
+                        <button>В корзину</button>
+                    </div>
+                </div>
+                { count += 1 }
+            {% elif count > 4%}
+                { count = 0 }
+                <br>
+            {% endif %}
         {% endfor %}
     </div>
     <div>

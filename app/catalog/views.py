@@ -7,11 +7,12 @@ products = Products.objects.order_by('date')
 context = {
         'cat': cat,
         'title': 'Категории',
-        'prod': products
+        'prod': products,
+        'count': 0,
     }
-print(cat)
 
 def magazine_catalog(request):
+    # print(context)
     context['cat_selected'] = 'Каталог' 
     return render(request, 'catalog/catalog.html', context=context)
 
