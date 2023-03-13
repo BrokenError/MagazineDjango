@@ -3,7 +3,7 @@
 {% load static %}
 {% csrf_token %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}{{ cat_selected }}{% endblock %}
 
 {% block content %}
 <div class="main">
@@ -18,25 +18,17 @@
             {% endfor %}
         </ul>
     </div>
-    <div style="margin-top: 200px; display: block;">
+    <div class="products">
         {% for i in prod %}
-            {% if count == 0 or count < 4 %}
-                <div class="products">
-                    <div class="products_img">
-                        <p><img src="{{ i.photo.url }}"></p>
-                        {{ i.photo }}
-                        <p>{{ i.title }}</p>
-                        <p>{{ i.cost }}</p>
-                        <button>В корзину</button>
-                    </div>
-                </div>
-                { count += 1 }
-            {% elif count > 4%}
-                { count = 0 }
-                <br>
-            {% endif %}
+            <div class="products_case">
+                <img style="width: 350px; height: 350px;" src="{{ i.photo.url }}">
+                <p>{{ i.title }}</p>
+                <p>{{ i.cost }} рублей</p>
+                <button class="btn-catalog">В корзину</button>
+            </div>
         {% endfor %}
     </div>
+    
     <div>
 
     </div>

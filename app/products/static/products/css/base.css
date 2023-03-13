@@ -2,6 +2,18 @@ body{
     background-color: #ffffff;
 }
 
+button{
+    color: black;
+    background-color: white;
+    border: none;
+
+}
+
+button:hover{
+    color: #FF1E44;
+    transform: scale(1.05);
+}
+
 UL, li, ol{
     margin: 0;
     padding: 0;
@@ -174,5 +186,20 @@ ul li:hover{
 }
 
 .products{
-    display: flex;
+    margin-top: 200px; 
+    display: flex; 
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 70px;
+}
+
+.products_case{
+    width: 350px;
+    height: 480px;
+}
+
+.btn-catalog{
+    background-color: #f0efef;
+    font-size: 20px;
+    padding: 10px 30px;
 }

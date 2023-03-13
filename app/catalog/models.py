@@ -4,7 +4,7 @@ class Products(models.Model):
     title = models.CharField('Название', max_length=50)
     cost = models.DecimalField('Стоимость', max_digits=10, decimal_places=2)
     full_text = models.TextField('Описание')
-    photo = models.ImageField(upload_to="products/static/products/img/new_photo")
+    photo = models.ImageField(blank=True)
     date = models.DateTimeField('Дата появления товара')
     cat = models.ForeignKey('Categories', on_delete=models.PROTECT)
 
