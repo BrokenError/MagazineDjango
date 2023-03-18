@@ -3,9 +3,11 @@
 {% load static %}
 {% csrf_token %}
 
-{% block title %}Главная страница{% endblock %}
+{% block title %} Главная страница {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'products/css/login.css' %}">
+
 <div class="main">
     <div class="example_work">
         <img src="{% static 'products/img/example_work/1.png' %}">
@@ -33,12 +35,5 @@
             </div>
         </div>
     </div>
-    <div>
-
-    </div>
-    <div>
-
-    </div>
 </div>
-
 {% endblock %}

@@ -8,8 +8,4 @@ def magazine_home(request):
 def user_basket(request):
     return render(request, 'products/basket.html')
 
-
-def user_login(request):
-    return render(request, 'products/login.html')
-
 # Create your views here.
