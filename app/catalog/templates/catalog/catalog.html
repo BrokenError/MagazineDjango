@@ -21,10 +21,12 @@
     <div class="products">
         {% for i in prod %}
             <div class="products_case">
-                <img style="width: 350px; height: 350px;" src="{{ i.photo.url }}">
-                <p>{{ i.title }}</p>
-                <p>{{ i.cost }} рублей</p>
-                <button class="btn-catalog">В корзину</button>
+                <div class="product">
+                    <img style="width: 320px; height: 320px;" src="{{ i.photo.url }}">
+                    <p>{{ i.title }}</p>
+                    <p>{{ i.cost }} рублей</p>
+                    <button class="btn-catalog">В корзину</button>
+                </div>
             </div>
         {% endfor %}
     </div>

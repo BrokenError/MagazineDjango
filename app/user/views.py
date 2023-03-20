@@ -1,29 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.views.generic.edit import FormView
-
-def user_login(request):
-    return render(request, 'products/main.html')
-
+from django.contrib.auth import logout
+from django.views.generic.edit import FormView, CreateView
+from .forms import *
+from django.urls import reverse_lazy
 
 def user_info(request):
-    return render(request, 'products/main.html')
+    return render(request, 'user/user-info.html')
+
+def registration(request):
+    return render(request, 'user/registration.html')
+
+def logout_user(request):
+    logout(request)
+    return redirect('magazine_home')
 
 
-class RegisterFormView(FormView):
-    form_class = UserCreationForm
-    success_url = ""
-
-    template_name = 'register.hmtl'
-
-    # class Meta:
-    #     model = User
-    #     fields = ('username', 'password1', 'password2', 'photo')
-
-
-    def form_valid(self, form):
-        form.save()
-        return super(RegisterFormView, self).form_valid(form)
-
-    def form_invalid(self, form):
-        return super(RegisterFormView, self).form_invalid(form)
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'user/registration.html'
+    success_url = reverse_lazy('magazine_home')

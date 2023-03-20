@@ -6,7 +6,7 @@ let unlock = true;
 
 const timeout = 800;
 
-if (popupLinks.length > 0){
+if (popupLinks.length >= 0){
     for (let index = 0; index < popupLinks.length; index++){
         const popupLink = popupLinks[index];
         popupLink.addEventListener("click", function (e) {
@@ -40,7 +40,7 @@ function popupOpen(curentPopup){
             bodyLock();
         }
         curentPopup.classList.add('open');
-        curentPopup.addEventListener('clock', function (e) {
+        curentPopup.addEventListener('click', function (e) {
             if (!e.target.closest('.popup__content')){
                 popupClose(e.target.closest('.popup'));
             }
@@ -89,10 +89,3 @@ function bodyUnLock(){
         unlock = true;
     }, timeout);
 }
-
-// document.addEventListener('keydown', function (e) {
-//     if (e.which === 27){
-//         const popupActivate = document.querySelector('.popup.open');
-//         popupClose(popupActivate);
-//     }
-// });

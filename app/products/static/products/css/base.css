@@ -6,7 +6,14 @@ button{
     color: black;
     background-color: white;
     border: none;
+    border-radius: 5px;
 
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 button:hover{
@@ -43,6 +50,7 @@ a{
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    z-index: 2;
 
 }
 
@@ -91,9 +99,10 @@ ul li:hover{
 }
 
 .main{
-    margin: 100px 140px;
-    height: 1640px;
-    justify-content: space-between;
+    padding: 100px 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .example_work{
@@ -193,10 +202,28 @@ ul li:hover{
     gap: 70px;
 }
 
+.products_case:hover{
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+    transform: scale(1.05);
+    transition: all 0.8s ease 0s;
+}
+
 .products_case{
+    padding: 10px;
     width: 350px;
     height: 480px;
 }
+/* 
+.product:hover{
+    transform: scale(0.95);
+    transition: all 0.8s ease 0s;
+} */
+
+.block-services{
+
+}
+
 
 .btn-catalog{
     background-color: #f0efef;
