@@ -103,6 +103,7 @@ ul li:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 200px;
 }
 
 .example_work{
@@ -118,6 +119,7 @@ ul li:hover{
 .services{
     display: flex;
     justify-content: space-between;
+    gap: 60px;
 }
 
 .services div{
@@ -171,7 +173,7 @@ ul li:hover{
 }
 
 .categories{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 20px;
     margin: 0 300px;
     background-color: #f0efef;
@@ -195,10 +197,11 @@ ul li:hover{
 }
 
 .products{
-    margin-top: 200px; 
+    width: 100%; 
     display: flex; 
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: start;
     gap: 70px;
 }
 
@@ -219,10 +222,6 @@ ul li:hover{
     transform: scale(0.95);
     transition: all 0.8s ease 0s;
 } */
-
-.block-services{
-
-}
 
 
 .btn-catalog{

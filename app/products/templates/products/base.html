@@ -22,8 +22,15 @@
         <ul class="header_links">
             <a href="{% url 'magazine_catalog' %}"><li><i class="fa-solid fa-bars"></i><br>Каталог</li></a>
             {% if user.is_authenticated %}
-                <a href="{% url 'user_basket' %}"><li><i class="fa-solid fa-basket-shopping"></i><br>Корзина</li></a>
-                
+                {% with total_items = cart|length %}
+                {% if cart|length > 0 %}
+                    <a href="{% url 'user_basket' %}"><li><i class="fa-solid fa-basket-shopping"></i><br>В Корзине:</li></a>
+                    {{ total_items }} шт, ${{ cart.get_total_price }}
+                {% else %}
+                    <a href="{% url 'user_basket' %}"><li><i class="fa-solid fa-basket-shopping"></i><br>Корзина пуста</li></a>
+                {% endif %}
+                {% endwith %}
+
                 <a href="{% url 'user' %}"><li><img src="{% static 'user/img/avatar.jpg' %}" style="height: 32px;"><br>{{ user.username }}</li></a>
             {% else %}
                 <a href="#popup" class="popup-link"><li><i class="fa-solid fa-basket-shopping"></i><br>Корзина</li></a>
@@ -44,7 +51,7 @@
                             <a href="{% url 'registration' %}">Регистрация</a>
                         </div>
                         <div class="modal-inputs__signin">
-                            <form method="post">
+                            <form method="POST" action="{% url 'magazine_home' %}">
                                 {% csrf_token %}
                                 {% for f in form %}
                                 <div class="modal-input">

@@ -11,7 +11,7 @@
         <ul>
             {% for i in cat %}
                 {% if i.title == cat_selected %}
-                    <a href="{% url i.title %}"><li class="categoies_selected">{{ i.title }}</li></a>
+                        <a href="{% url i.title %}"><li class="categoies_selected">{{ i.title }}</li></a>
                 {% else %}
                     <a href="{% url i.title %}"><li>{{ i.title }}</li></a>
                 {% endif %}
@@ -20,14 +20,20 @@
     </div>
     <div class="products">
         {% for i in prod %}
-            <div class="products_case">
-                <div class="product">
-                    <img style="width: 320px; height: 320px;" src="{{ i.photo.url }}">
-                    <p>{{ i.title }}</p>
-                    <p>{{ i.cost }} рублей</p>
-                    <button class="btn-catalog">В корзину</button>
+                <div class="products_case">
+                    <div class="product">
+                        <img style="width: 320px; height: 320px;" src="{{ i.photo.url }}">
+                        <p>{{ i.title }}</p>
+                        <p>{{ i.cost }} рублей</p>
+                        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                            {{ cart_product_form }}
+                            {% csrf_token %}
+                            <input class="btn-catalog" type="submit">В корзину</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+        {% empty %}
+                <p style="margin: 0 auto;">ЗДЕСЬ ПОКА НИЧЕГО НЕТ</p>
         {% endfor %}
     </div>
     
