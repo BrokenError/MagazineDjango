@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'products/base.html' %}
 {% load static %}
 
 {% block title%}Корзина покупок{% endblock %}
@@ -22,21 +22,22 @@
             {% with product=item.product %}
                 <tr>
                     <td>
-                        <a href="{{ product.get_absolute_url }}">
-                            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}
+                        <a href="">
+                        {% comment %} <a href="{{ product.get_absolute_url }}"> {% endcomment %}
+                            <img src="{% if product.photo %}{{ product.photo.url }}{% else %}{% static 'img/no_image.png' %}
                             {% endif %}">
                         </a>
                     </td>
-                    <td>{{ product.name }}</td>
+                    <td>{{ product.title }}</td>
                     <td>
-                        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                        <form action="{% url 'cart_add' product.id %}" method="post">
                             {{ item.update_quantity_form.quantity }}
                             {{ item.update_quantity_form.update }}
                             <input type="submit" value="Обновить">
                             {% csrf_token %}
                         </form>
                     </td>
-                    <td><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
+                    <td><a href="{% url 'cart_remove' product.id %}">Удалить</a></td>
                     <td>
                         {{ item.quantity }}
                     </td>
@@ -54,7 +55,7 @@
     </table>
 
     <p class="text-right">
-        <a href="{% url 'shop:product_list' %}" class="button light">В магазин</a>
+        <a href="{% url 'magazine_catalog' %}" class="button light">В магазин</a>
         <a href="#" class="button">Оформить заказ</a>
     </p>
 

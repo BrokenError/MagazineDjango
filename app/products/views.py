@@ -13,7 +13,9 @@ class Login(LoginView):
 
 
     def get_success_url(self):
-        return reverse_lazy('magazine_catalog')
+        return reverse_lazy('magazine_home')
+
+
 
 
 def magazine_home(request):
