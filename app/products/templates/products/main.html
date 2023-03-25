@@ -3,15 +3,18 @@
 {% load static %}
 {% csrf_token %}
 
-{% block title %} Главная страница {% endblock %}
+{% block title %} Главная страница{% endblock %}
 
 {% block content %}
-
 <div class="main">
-    <div class="example_work">
-        <img src="{% static 'products/img/example_work/1.png' %}">
-        <img src="{% static 'products/img/example_work/2.png' %}">
-        <img src="{% static 'products/img/example_work/3.png' %}">
+    <div class="wrappel">
+        <div class="carousel">
+            <p style="font-size:20px"><</p>
+            {% for item in products_images %}
+                <img src="{{ item.photo.url }}">
+            {% endfor %}
+            <p style="font-size:20px">></p>
+        </div>
     </div>
     <div class="block-services">
         <p style="height: 100px; font-size: 35px; font-weight: bold; display: flex; justify-content: center;">НАШИ УСЛУГИ</p><br>

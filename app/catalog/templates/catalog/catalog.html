@@ -20,6 +20,7 @@
     </div>
     <div class="products">
         {% for i in prod %}
+            {% if i.available %}
                 <div class="products_case">
                     <div class="product">
                         <img style="width: 320px; height: 320px;" src="{{ i.photo.url }}">
@@ -28,17 +29,22 @@
                         <form action="{% url 'cart_add' i.id %}" method="post">
                             {{ cart_product_form }}
                             {% csrf_token %}
-                            <button class="btn-catalog" type="submit">В корзину</button>
+                            <button class="btn-catalog" type="submit" style='margin-left:30px'>В корзину</button>
                         </form>
                     </div>
                 </div>
+            {% else %}
+                <div class="products_case">
+                    <div class="product">
+                        <img style="width: 320px; height: 320px;" src="{{ i.photo.url }}">
+                        <p>{{ i.title }}</p>
+                        <p>Нет в наличии</p>
+                    </div>
+                </div>
+            {% endif %}
         {% empty %}
                 <p style="margin: 0 auto;">ЗДЕСЬ ПОКА НИЧЕГО НЕТ</p>
         {% endfor %}
-    </div>
-    
-    <div>
-
     </div>
     <div>
 

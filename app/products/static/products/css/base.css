@@ -24,6 +24,7 @@ button:hover{
 UL, li, ol{
     margin: 0;
     padding: 0;
+    text-align: center;
     color: black;
     list-style-type: none;
     text-decoration: none;
@@ -228,4 +229,34 @@ ul li:hover{
     background-color: #f0efef;
     font-size: 20px;
     padding: 10px 30px;
+}
+
+
+/* БЛОК СЛАЙДЕРА */
+
+.wrappel{
+    max-width: 1200px;
+}
+
+.wrappel .carousel{
+    white-space: nowrap;
+    font-size: 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.carousel img:first-child{
+    margin-left: 0px;
+}
+.carousel img{
+    height: 350px;
+}
+
+.carousel{
+    overflow: hidden;
+    display: flex;
+    margin-left: 14px;
+    height: 350px;
+    width: calc(100%/3);
+    object-fit: cover;
 }

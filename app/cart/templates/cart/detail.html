@@ -41,15 +41,15 @@
                     <td>
                         {{ item.quantity }}
                     </td>
-                    <td class="num">${{ item.price }}</td>
-                    <td class="num">${{ item.total_price }}</td>
+                    <td class="num">{{ item.price }} рублей</td>
+                    <td class="num">{{ item.total_price }} рублей</td>
                 </tr>
             {% endwith %}
         {% endfor %}
         <tr>
             <td>Всего</td>
             <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price }}</td>
+            <td class="num">{{ cart.get_total_price }} рублей</td>
         </tr>
     </tbody>
     </table>
