@@ -125,12 +125,21 @@ ul li:hover{
 
 .services div{
     height: 450px;
-    width: 350px;
 }
 
 .service_block{
+    gap:20px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.service_block img{
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
 }
 
 .service_block button{
@@ -234,29 +243,137 @@ ul li:hover{
 
 /* БЛОК СЛАЙДЕРА */
 
+/* Import Google font - Poppins */
+.sliderr{
+  display: flex;
+  padding: 0 35px;
+  align-items: center;
+  justify-content: center;
+}
 .wrappel{
-    max-width: 1200px;
+  display: flex;
+  max-width: 1200px;
+  position: relative;
 }
-
+.wrappel i{
+    z-index: 1;
+  top: 50%;
+  height: 44px;
+  width: 44px;
+  color: #343F4F;
+  cursor: pointer;
+  font-size: 1.15rem;
+  position: absolute;
+  text-align: center;
+  line-height: 44px;
+  background: #f2f2f2;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: transform 1s linear;
+  animation: all ease 1s;
+}
+.wrappel i:active{
+  transform: translateY(-50%) scale(0.9);
+}
+.wrappel i:hover{
+  background: #f2f2f2;
+}
+.wrappel i:first-child{
+  left: -22px;
+  display: none;
+}
+.wrappel i:last-child{
+  right: -22px;
+}
 .wrappel .carousel{
-    white-space: nowrap;
-    font-size: 0;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.carousel img:first-child{
-    margin-left: 0px;
-}
-.carousel img{
-    height: 350px;
+  font-size: 0px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
 }
 
 .carousel{
-    overflow: hidden;
-    display: flex;
-    margin-left: 14px;
-    height: 350px;
-    width: calc(100%/3);
+    animation: all ease 1s;
+}
+
+.carousel.dragging{
+  cursor: grab;
+  scroll-behavior: auto;
+}
+.carousel.dragging img{
+  pointer-events: none;
+}
+.carousel img{
+    transition: all ease 1s;
+    animation: all ease 1s;
+    height: 340px;
     object-fit: cover;
+    user-select: none;
+    margin-left: 14px;
+    width: calc(100% / 3);
+}
+.carousel img:first-child{
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 900px) {
+  .carousel img{
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel img{
+    width: 100%;
+  }
+}
+
+
+/* БЛОК О НАС */
+
+.block-withus{
+    gap: 20px;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.a_button{
+    font-size: 15px;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    background-color: #F0EFEF;
+    border: none;
+    border-radius: 5px;
+}
+.a_button:hover{
+    color: #FF1E44;
+    transform: scale(1.05);
+}
+
+.block-withus-text{
+    max-width: 750px;
+}
+
+.block-withus-text p{
+    font-size: 24px;
+    text-align: left;
+}
+
+
+
+/* БЛОК О ПРЕИМУЩЕСТВАХ */
+
+.block-advantages{
+    display: flex;
+    flex-direction: row;
+}
+
+.advantage{
+    width: 200px;
 }
