@@ -6,7 +6,8 @@ from .forms import *
 from django.urls import reverse_lazy
 
 def user_info(request):
-    return render(request, 'user/user-info.html')
+    username = User.objects.get(pk=request.user.id)
+    return render(request, 'user/user-info.html', {'user': username})
 
 def registration(request):
     return render(request, 'user/registration.html')

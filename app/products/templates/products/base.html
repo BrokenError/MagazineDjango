@@ -16,28 +16,29 @@
 <body class="wrapper">
     <header class="header">
         <a href="{% url 'magazine_home' %}" style="height:50px"><label class="logo_text">BestFlowers</label></a>
-        <div>
-            <form action="{% url 'magazine_search' %}" method="get">
-                <input name="search"  type="text" placeholder="Поиск по сайту" style="width: 600px; height: 50px; border: none; padding-left: 10px;">
-                <button style="border:none; background-color: #f0efef;" type="submit"><i class="fa-solid fa-magnifying-glass" style="font-size: 24px;"></i></button>
-            </form>
-        </div>
+        <nav class="nav-menu">
+            <ul class="nav-menu-context">
+                <li><a href="">О нас</a></li>
+                <li><a href="{% url 'magazine_catalog' %}">Каталог</a></li>
+                <li><a href="">Доставка и оплата</a></li>
+            </ul>
+        </nav> 
         <ul class="header_links">
-            <a href="{% url 'magazine_catalog' %}"><li><i class="fa-solid fa-bars"></i><br>Каталог</li></a>
+            <li><a href="#popup" class="popup-link"><i class="fa-solid fa-magnifying-glass"></i></a></li>
             {% if user.is_authenticated %}
                 {% with total_items=cart|length %}
                         {% if cart|length > 0 %}
-                            <a href="{% url 'cart_detail' %}" style="position:relative"><li><i class="fa-solid fa-basket-shopping"></i><br>{{ cart.get_total_price }} Р</li><p style="background-color:#FF383D; border-radius: 20px; height:20px; width:20px; position:absolute; left:70px; top:-3px; color:white; text-align:center; line-height:20px">{{ total_items }}</p></a>
+                           <li><a href="{% url 'cart_detail' %}" style="position:relative"><i class="fa-solid fa-basket-shopping"></i><p class="num_goods">{{ total_items }}</p></a></li>
                         {% else %}
-                            <a href="{% url 'cart_detail' %}"><li><i class="fa-solid fa-basket-shopping"></i><br>Корзина пуста</li></a>
+                            <li><a href="{% url 'cart_detail' %}" style="position:relative"><i class="fa-solid fa-basket-shopping"></i><p class="num_goods">{{ total_items }}</p></a></li>
                         {% endif %}
                 {% endwith %}
-                <a href="{% url 'user' %}"><li><img src="{% static 'user/img/avatar.jpg' %}" style="height: 32px;"><p>{{ user.username }}<p></li></a>
+                <li><a href="{% url 'user' %}"><img src="{% static 'user/img/avatar.jpg' %}" style="height: 32px;"></a></li>
             {% else %}
-                <a href="#popup" class="popup-link"><li><i class="fa-solid fa-basket-shopping"></i><p>Корзина</p></li></a>
-                <a href="#popup" class="popup-link"><li><i class="fa-solid fa-user"></i><p>Войти</p></li></a>
+                <li><a href="#popup" class="popup-link"><i class="fa-solid fa-basket-shopping" style="position:relative"></i></a></li>
+                <li><a href="#popup" class="popup-link"><i class="fa-solid fa-user"></i></a></li>
             {% endif %}
-       </ul> 
+        </ul>
     </header>
 
     <main>
@@ -72,9 +73,9 @@
         </div>
     {% endif %}
 
-
     {% block content %}
     {% endblock %}
+
     </main>
 
     <footer class="footer">

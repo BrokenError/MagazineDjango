@@ -1,5 +1,9 @@
 body{
-    background-color: #ffffff;
+    background-color: white;
+    /* background-color: #EBD5B5; */
+    display: flex;
+    flex-direction: column;
+    gap:100px;
 }
 
 button{
@@ -10,10 +14,188 @@ button{
 
 }
 
-main{
+
+/* БЛОК HEADER */
+
+.num_goods{
+    background-color:#FF383D;
+    border-radius: 20px; 
+    height:20px; 
+    width:20px; 
+    left:30px; 
+    top:-3px; 
+    color:white; 
+    text-align:center; 
+    position:absolute; 
+    line-height:20px
+}
+
+.header{
+    width: 100%;
+    align-items: center;
+    padding: 20px 140px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    background-color: #C3C3C3;
+    position: sticky;
+    z-index: 2;
+
+}
+
+.header_left{
+    align-items: flex-end;
+}
+
+.header_links{
+    height: 50px;
+    display: flex;
+    transform: none;
+}
+
+.header_links i{
+    font-size: 28px;
+    margin: 0 28%;
+}
+
+.nav-menu-context {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:60px;
+    font-size: 16px;
+}
+
+.header ul{
+    margin: 0;
+}
+
+.header a{
+    color: black;
+}
+
+
+.header_links a{
+    vertical-align: middle;
+    color:#000000;
+    font-size: 17px;
+    margin: 0 20px;
+}
+
+.header li{
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* БЛОК СЛАЙДЕРА */
+
+.sliderr{
+    display: flex;
+    padding: 0 35px;
+    align-items: center;
     justify-content: center;
+  }
+  .wrappel{
+    display: flex;
+    max-width: 1400px;
+    position: relative;
+  }
+  .wrappel i{
+      z-index: 1;
+    top: 50%;
+    height: 44px;
+    width: 44px;
+    color: #343F4F;
+    cursor: pointer;
+    font-size: 1.15rem;
+    position: absolute;
+    text-align: center;
+    line-height: 44px;
+    background: #f2f2f2;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: transform 1s linear;
+    animation: all ease 1s;
+  }
+  .wrappel i:active{
+    transform: translateY(-50%) scale(0.9);
+  }
+  .wrappel i:hover{
+    background: #f2f2f2;
+  }
+  .wrappel i:first-child{
+    left: -22px;
+    display: none;
+  }
+  .wrappel i:last-child{
+    right: -22px;
+  }
+  .wrappel .carousel{
+    font-size: 0px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+  }
+  
+  .carousel{
+      animation: all ease 1s;
+  }
+  
+  .carousel.dragging{
+    cursor: grab;
+    scroll-behavior: auto;
+  }
+  .carousel.dragging img{
+    pointer-events: none;
+  }
+  .carousel img{
+      transition: all ease 1s;
+      animation: all ease 1s;
+      height: 340px;
+      object-fit: cover;
+      user-select: none;
+      margin-left: 14px;
+      width: calc(100% / 3);
+  }
+  .carousel img:first-child{
+    margin-left: 0px;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .carousel img{
+      width: calc(100% / 2);
+    }
+  }
+  
+  @media screen and (max-width: 550px) {
+    .carousel img{
+      width: 100%;
+    }
+  }
+
+/* БЛОК FOOTER */
+
+.footer{
+    padding: 20px 140px;
+    height: 200px;
+    background-color: #C3C3C3;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.logo_text{
+    vertical-align: middle;
+    text-align: center;
+    color: #FF3838;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.nav-menu-context li:hover{
+    border-bottom: 1px #FF1E44;;
 }
 
 button:hover{
@@ -31,72 +213,15 @@ UL, li, ol{
     transform: none;
 }
 
-li:hover{
-    color: #FF1E44;
-    transform: scale(1.05);
-}
-
 a{
     list-style: none;
     text-decoration: none;
 }
 
-.header{
-    width: 100%;
-    vertical-align: middle;
-    padding: 20px 85px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #f0efef;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-
-}
-
-.header_left{
-    align-items: flex-end;
-}
-
-.logo_text{
-    vertical-align: middle;
-    text-align: center;
-    color: #FF3838;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.header_links{
-    height: 50px;
-    display: flex;
-    transform: none;
-}
-
-.header_links i{
-    font-size: 28px;
-    margin: 0 28%;
-}
-
-ul li:hover{
+ul li a:hover{
     color: #FF1E44;
     transform: scale(1.05);
-}
-
-.header ul{
-    margin: 0;
-}
-
-
-.header_links li{
-    vertical-align: middle;
-    color:#000000;
-    font-size: 17px;
-    margin: 0 20px;
-}
-
-.header a{
-    vertical-align: middle;
+    transition: all 0.5s ease;
 }
 
 .main{
@@ -116,6 +241,9 @@ ul li:hover{
 .example_work img{
     height: 500px;
 }
+
+
+/* БЛОК О НАШИХ УСЛУГАХ */
 
 .services{
     display: flex;
@@ -151,15 +279,6 @@ ul li:hover{
     background-color: #f0efef;
 }
 
-
-.footer{
-    padding: 20px 140px;
-    height: 200px;
-    background-color: #f0efef;
-    display: flex;
-    justify-content: space-between;
-}
-
 .contacts{
     font-size: 20px;
     font-weight: bold;
@@ -180,7 +299,83 @@ ul li:hover{
     color: #FF1E44;
     text-decoration: none;
     transform: scale(1.05);
+    transition: all 0.5s ease;
 }
+
+
+/* БЛОК О НАС */
+
+.block-withus{
+    gap: 20px;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.a_button{
+    font-size: 15px;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    background-color: #F0EFEF;
+    border: none;
+    border-radius: 5px;
+}
+.a_button:hover{
+    transition: all 0.5s ease;
+    color: #FF1E44;
+    transform: scale(1.05);
+}
+
+.block-withus-text{
+    max-width: 750px;
+}
+
+.block-withus-text p{
+    font-size: 24px;
+    text-align: center;
+}
+
+
+
+/* БЛОК О ПРЕИМУЩЕСТВАХ */
+
+.block-advantages{
+    margin-bottom: 50px;
+    max-width: 1200px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap:90px;
+
+}
+
+.advantage img{
+    vertical-align: middle;
+}
+
+.advantage{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:20px;
+}
+
+
+
+/* БЛОКИ ДОЧЕРНИЕ */
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .categories{
     /* border: 1px solid black; */
@@ -241,139 +436,75 @@ ul li:hover{
 }
 
 
-/* БЛОК СЛАЙДЕРА */
-
-/* Import Google font - Poppins */
-.sliderr{
-  display: flex;
-  padding: 0 35px;
-  align-items: center;
-  justify-content: center;
-}
-.wrappel{
-  display: flex;
-  max-width: 1200px;
-  position: relative;
-}
-.wrappel i{
-    z-index: 1;
-  top: 50%;
-  height: 44px;
-  width: 44px;
-  color: #343F4F;
-  cursor: pointer;
-  font-size: 1.15rem;
-  position: absolute;
-  text-align: center;
-  line-height: 44px;
-  background: #f2f2f2;
-  border-radius: 50%;
-  transform: translateY(-50%);
-  transition: transform 1s linear;
-  animation: all ease 1s;
-}
-.wrappel i:active{
-  transform: translateY(-50%) scale(0.9);
-}
-.wrappel i:hover{
-  background: #f2f2f2;
-}
-.wrappel i:first-child{
-  left: -22px;
-  display: none;
-}
-.wrappel i:last-child{
-  right: -22px;
-}
-.wrappel .carousel{
-  font-size: 0px;
-  cursor: pointer;
-  overflow: hidden;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-}
-
-.carousel{
-    animation: all ease 1s;
-}
-
-.carousel.dragging{
-  cursor: grab;
-  scroll-behavior: auto;
-}
-.carousel.dragging img{
-  pointer-events: none;
-}
-.carousel img{
-    transition: all ease 1s;
-    animation: all ease 1s;
-    height: 340px;
-    object-fit: cover;
-    user-select: none;
-    margin-left: 14px;
-    width: calc(100% / 3);
-}
-.carousel img:first-child{
-  margin-left: 0px;
-}
-
-@media screen and (max-width: 900px) {
-  .carousel img{
-    width: calc(100% / 2);
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .carousel img{
-    width: 100%;
-  }
-}
-
-
-/* БЛОК О НАС */
-
-.block-withus{
-    gap: 20px;
-    max-width: 1200px;
+.user-info{
     display: flex;
-    justify-content: center;
     flex-direction: column;
+}
+
+
+.cart{
+    border-radius: 3%;
+    padding: 70px;
+    background-color: #D9D8D8;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart_item{
+    background-color: #C3C3C3;
+    padding: 20px;
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content: space-between;
+    gap: 150px;
+}
+
+.cart_body{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px
+}
+
+.cart_img{
+    width: 150px;
+    height: 150px;
+}
+
+.cart_item_text{
+    display: flex;
+    flex-direction: column;
+    margin-right: 60px;
+    gap: 20px;
+}
+
+.cart_item_text p{
+    font-size: 18px;
+    margin: 0px;
+}
+
+.cart_item_text-3{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.submit{
+    border: none;
+    border-radius: 3px;
+}
+
+
+.cart_count-items{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
     align-items: center;
 }
 
-.a_button{
-    font-size: 15px;
-    width: 200px;
-    padding: 10px;
-    text-align: center;
-    color: black;
-    background-color: #F0EFEF;
+.cart_item_text-3 select{
+    background-color:transparent;
+    padding: 2px 5px;
     border: none;
-    border-radius: 5px;
-}
-.a_button:hover{
-    color: #FF1E44;
-    transform: scale(1.05);
-}
-
-.block-withus-text{
-    max-width: 750px;
-}
-
-.block-withus-text p{
-    font-size: 24px;
-    text-align: left;
-}
-
-
-
-/* БЛОК О ПРЕИМУЩЕСТВАХ */
-
-.block-advantages{
-    display: flex;
-    flex-direction: row;
-}
-
-.advantage{
-    width: 200px;
 }

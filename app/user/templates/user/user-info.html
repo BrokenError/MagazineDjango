@@ -1,7 +1,23 @@
 {% extends 'products/base.html' %}
 
 {% block content %}
-Вы вошли
+Вы вошли 
+<div class="user-info">
+    <p>{{ user.photo }}</p>
+    <p>Никнейм: {{ user.username }}</p>
+    <p>Баланс: {{ user.profile.balance }} рублей</p>
+    <p>Имя: {{ user.first_name }}</p>
+    <p>Фамилия: {{ user.last_name }}</p>
+    <p>День рождение: {{ user.profile.birth_date }}</p>
+    <p>Страна: {{ user.profile.country }}</p>
+    <p>Город: {{ user.profile.city }}</p>
+    <p>О себе: {{ user.profile.bio }}</p>
+    <p>Электронная почта: {{ user.email }}</p>
+    <p>Номер телефона: {{ user.profile.phone_number }}</p>
+    <p>Последний вход: {{ user.last_login }}</p>
 
+    <p>Зарегистрированы: {{ user.date_joined }}</p>
+
+</div>
 <a href="{% url 'logout' %}">Выйти?</a>
 {% endblock %}
