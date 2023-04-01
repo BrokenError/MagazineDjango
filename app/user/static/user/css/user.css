@@ -1,0 +1,63 @@
+
+.user{
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    gap:60px;
+}
+
+.user-links{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-links li{
+    padding: 10px;
+    background-color: #C3C3C3;
+    text-align: left;
+    color: black;
+    border-radius: 5px;
+}
+
+.user-links li:hover{
+    transition: all 0.5s ease;
+    color: #FF1E44;
+    transform: scale(1.05);
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.user_main-header{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(235, 235, 235);
+    border-radius: 10px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.user_main-body{
+    background-color: rgb(235, 235, 235);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.user_personal-data, .user-info, .user_security{
+    width: 600px;
+}
+
+.user_personal-data{
+    background-color: rgb(235, 235, 235);
+}
+
+
+.user_help-questions{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}

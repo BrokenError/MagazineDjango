@@ -1,9 +1,15 @@
+html{
+    height: 100%;
+}
+
 body{
+    margin: 0;
     background-color: white;
     /* background-color: #EBD5B5; */
     display: flex;
     flex-direction: column;
-    gap:100px;
+    gap:70px;
+    min-height: 100%;
 }
 
 button{
@@ -216,6 +222,7 @@ UL, li, ol{
 a{
     list-style: none;
     text-decoration: none;
+    color: black;
 }
 
 ul li a:hover{
@@ -370,9 +377,9 @@ ul li a:hover{
 /* БЛОКИ ДОЧЕРНИЕ */
 
 main{
+    min-height: calc(100vh - 230px - 200px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -444,12 +451,18 @@ main{
 
 .cart{
     border-radius: 3%;
-    padding: 70px;
+    padding: 40px 75px 5px;
     background-color: #D9D8D8;
     max-width: 1000px;
+}
+
+
+.cart-items{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 700px;
+    overflow-y: scroll;
 }
 
 .cart_item{
@@ -468,33 +481,39 @@ main{
 }
 
 .cart_img{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
 }
 
 .cart_item_text{
     display: flex;
     flex-direction: column;
     margin-right: 60px;
-    gap: 20px;
+    gap: 8px;
 }
 
 .cart_item_text p{
-    font-size: 18px;
+    font-size: 15px;
     margin: 0px;
 }
 
 .cart_item_text-3{
     display: flex;
     flex-direction: row;
-    gap:10px;
+    gap:15px;
 }
 
 .submit{
     border: none;
     border-radius: 3px;
+    padding: 5px;
 }
 
+.submit:hover{
+    transition: all 0.5s ease;
+    color: #FF1E44;
+    transform: scale(1.05);
+}
 
 .cart_count-items{
     display: flex;
@@ -507,4 +526,31 @@ main{
     background-color:transparent;
     padding: 2px 5px;
     border: none;
+}
+
+.cart_buy{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cart_buy a{
+    margin-left: 100px;
+}
+
+.cart_buy-right{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.cart_item-delete{
+    display: flex;
+    flex-direction: row;
+    gap:90px;
+}
+.cart_item-delete a{
+    width: 100px;
+    padding: 5px 5px;
 }

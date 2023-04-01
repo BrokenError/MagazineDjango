@@ -1,0 +1,50 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'user/css/user.css' %}">
+
+<div class="user"> 
+    <ul class="user-links">
+        {% for item in title_links_user %}
+        <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
+        {% endfor %}
+    </ul>
+    <div class="user_personal-data">
+        <div>
+            {% if user.photo %}
+                <p>{{ user.photo }}</p>
+            {% else %}
+                <img src="{% static 'user/img/avatar.jpg' %}" style="height: 72px; width:72px; border-radius:50%">
+            {% endif %}
+            {% if user.first_name %}
+                {% if user.last_name %}
+                    <p>{{ user.first_name }} {{ user.last_name }}</p>
+                {% else %}
+                    <p>{{ user.first_name }}</p>
+                {% endif %}
+            {% else %}
+                <p>{{ user.username }}</p>
+            {% endif %}
+            <div>
+                <p>ID: {{ user.id }}</p>
+                <p>Баланс: {{ user.profile.balance }} ₽</p> <button>ПОПОЛНИТЬ</button>
+            </div>
+        </div>
+        <div>
+            <p>Имя: <input placeholder={{ user.first_name }}></p>
+            <p>Фамилия: <input placeholder={{ user.last_name }}></p>
+            <p>День рождение: <input placeholder={{ user.profile.birth_date }}></p>
+        </div>
+        <p>Никнейм: <input placeholder={{ user.username }}></p>
+
+        {% comment %} ЭТО ПОДРОБНЕЕ О СЕБЕ, ЕСЛИ БУДЕТ НАЖАТА КНОПКА {% endcomment %}
+        <div>
+            <p>Страна: <input placeholder={{ user.profile.country }}></p>
+            <p>Город: <input placeholder={{ user.profile.city }}></p>
+            <p>О себе: <input placeholder={{ user.profile.bio }}></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

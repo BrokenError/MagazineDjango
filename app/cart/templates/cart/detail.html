@@ -4,19 +4,20 @@
 {% block title%}Корзина покупок{% endblock %}
 
 {% block content %}
+    {% for item in cart %}
+    <p style="margin-left: -450px; font-size: 30px">Ваша корзина</p>
     <div class="cart">
-        {% for item in cart %}
-            {% with product=item.product %}
+        <div class="cart-items">
+                {% with product=item.product %}
+                <div class="cart_item">
+                    <div class="cart_img">
+                    {% comment %} <a href="{{ product.get_absolute_url }}"> {% endcomment %}
+                        <a href=""><img src="{% if product.photo %}{{ product.photo.url }}{% else %}
+                        {% static 'img/no_image.png' %}{% endif %}" class="cart_img"></a>
+                    </div>
 
-            <div class="cart_item">
-                <div class="cart_img">
-                {% comment %} <a href="{{ product.get_absolute_url }}"> {% endcomment %}
-                    <a href=""><img src="{% if product.photo %}{{ product.photo.url }}{% else %}
-                    {% static 'img/no_image.png' %}{% endif %}" class="cart_img"></a>
-                </div>
-
-                <div class="cart_item_text">
-                        <p style="font-size: 30px">{{ product.title }}</p>
+                    <div class="cart_item_text">
+                        <p style="font-size: 24px">{{ product.title }}</p>
                         <form action="{% url 'cart_add' product.id %}" method="post" class="cart_count-items">
                             <p>Кол-во</p>
                             <div class="cart_item_text-3"> 
@@ -25,15 +26,34 @@
                             </div>
                             {% csrf_token %}
                         </form>
-                    <p>{{ item.total_price }} ₽ <a href="{% url 'cart_remove' product.id %}" class="a_button">Удалить</a></p>
+                        <div class="cart_item-delete">
+                            <p>{{ item.total_price }} ₽</p>
+                            <a href="{% url 'cart_remove' product.id %}" class="a_button">Удалить</a>
+                        </div>
+                    </div>
                 </div>
+                {% endwith %}
+        </div>
+        <div class="cart_buy">
+            <div class="cart_buy-right">
+                <p>Итого:</p> 
+                <p>{{ cart.get_total_price }} ₽</p>
             </div>
-            {% endwith %}
-        {% endfor %}
-            <td>Всего</td>
-            <td colspan="4"></td>
-            <td class="num">{{ cart.get_total_price }} рублей</td>
+            <a href="#" class="a_button cart_buy-left">Оформить заказ</a>
+        </div>
     </div>
+    {% empty %}
+    <div class="cart_zero-items">
+        <div style="height:80%">
+            <p style="font-size:35px">Корзина пуста</p>
+        </div>
+        <div class="cart_links">
+            <a href="{% url 'magazine_catalog' %}" class="a_button light">В магазин</a>
+            <a href="#" class="a_button">Оформить заказ</a>
+        </div>
+    </div>
+    {% endfor %}
+
     {% comment %} <div>
         <p class="text-right">
             <a href="{% url 'magazine_catalog' %}" class="a_button light">В магазин</a>

@@ -5,9 +5,26 @@ from django.views.generic.edit import FormView, CreateView
 from .forms import *
 from django.urls import reverse_lazy
 
+
+context = {
+    'user': '',
+    'title_links_user': [{'link': 'user', 'name':'Главная'},
+                        {'link':'personal', 'name':'Личные данные'},
+                        {'link':'security', 'name':'Безопасность и вход'}],
+}
+
 def user_info(request):
-    username = User.objects.get(pk=request.user.id)
-    return render(request, 'user/user-info.html', {'user': username})
+    context['user'] = User.objects.get(pk=request.user.id)
+    return render(request, 'user/user-info.html', context=context)
+
+
+def user_personal(request):
+    return render(request, 'user/user-personal.html', context=context)
+
+
+def user_security(request):
+    return render(request, 'user/user-security.html', context=context)
+
 
 def registration(request):
     return render(request, 'user/registration.html')

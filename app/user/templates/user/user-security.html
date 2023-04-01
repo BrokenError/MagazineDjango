@@ -1,0 +1,45 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'user/css/user.css' %}">
+
+<div class="user"> 
+    {% comment %} ЭТО БЕЗОПАСНОСТЬ И ВХОД {% endcomment %}
+    <ul class="user-links">
+        {% for item in title_links_user %}
+        <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
+        {% endfor %}
+        </ul>
+    <div class="user_security">
+        <div>
+            <div>
+                {% if user.email %}
+                    <a href=""><p>Электронная почта: {{ user.email }}</p></a>
+                {% else %}
+                    <p>Электронная почта:<a href="">Привязать</a></p>
+                {% endif %}
+                {% if user.profile.phone_number %}
+                    <a href=""><p>Номер телефона: {{ user.profile.phone_number }}</p></a>
+                {% else %}
+                    <p>Номер телефона:<a href="">Привязать</a></p>
+                {% endif %}
+            </div>
+            <div>
+                <p>Последний вход: {{ user.last_login }}</p>
+                <p>Зарегистрированы: {{ user.date_joined }}</p>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'logout' %}">Выйти?</a>
+            <a href="">Удалить аккаунт?</a>
+        </div>
+    </div>
+    {% comment %} <div>
+        <p>Подтвердите свой выбор:</p><input type="checkbox" id="scales" name="scales" checked>
+        <button>Подтвердить</button>
+    </div> {% endcomment %}
+
+    {% comment %} РЕАЛИЗОВАТЬ МОДАЛЬНОЕ ОКНО ГДЕ БУДЕТ ПОДТВЕРЖДЕНИЕ ДЕЙСТВИЯ ДЛЯ ПЕРЕХОДА К УДАЛЕНИЮ {% endcomment %}
+</div>
+{% endblock %}

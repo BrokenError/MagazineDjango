@@ -1,23 +1,43 @@
 {% extends 'products/base.html' %}
+{% load static %}
 
 {% block content %}
-Вы вошли 
-<div class="user-info">
-    <p>{{ user.photo }}</p>
-    <p>Никнейм: {{ user.username }}</p>
-    <p>Баланс: {{ user.profile.balance }} рублей</p>
-    <p>Имя: {{ user.first_name }}</p>
-    <p>Фамилия: {{ user.last_name }}</p>
-    <p>День рождение: {{ user.profile.birth_date }}</p>
-    <p>Страна: {{ user.profile.country }}</p>
-    <p>Город: {{ user.profile.city }}</p>
-    <p>О себе: {{ user.profile.bio }}</p>
-    <p>Электронная почта: {{ user.email }}</p>
-    <p>Номер телефона: {{ user.profile.phone_number }}</p>
-    <p>Последний вход: {{ user.last_login }}</p>
-
-    <p>Зарегистрированы: {{ user.date_joined }}</p>
-
+<link rel="stylesheet" href="{% static 'user/css/user.css' %}">
+<div class="user"> 
+    <ul class="user-links">
+    {% for item in title_links_user %}
+    <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
+    {% endfor %}
+    </ul>
+    <div class="user-info">
+        <div class="user_main-header">
+            {% if user.photo %}
+                <p style="height: 56px; width:56px; border-radius:50%">{{ user.photo }}</p>
+            {% else %}
+                <img src="{% static 'user/img/avatar.jpg' %}" style="height: 56px; width:56px; border-radius:50%">
+            {% endif %}
+            {% if user.first_name %}
+                {% if user.last_name %}
+                    <p>{{ user.first_name }} {{ user.last_name }}</p>
+                {% else %}
+                    <p>{{ user.first_name }}</p>
+                {% endif %}
+            {% else %}
+                <p>{{ user.username }}</p>
+            {% endif %}
+        </div>
+        <div class="user_main-body">
+            {% if user.profile.phone_number %}
+                <p>Номер телефона: {{ user.profile.phone_number }}</p>
+            {% endif %}
+            <button>Обновите пароль</button>
+        </div>
+        <div class="user_help-questions">
+            <a href="">Как пополнить баланс своего аккаунта?</a>
+            <a href="">Как оформить подарочную карту?</a>
+            <a href="">Как сменить номер телефона?</a>
+            <a href="">Как изменить пароль от аккаунта?</a>
+        </div>
+    </div>
 </div>
-<a href="{% url 'logout' %}">Выйти?</a>
 {% endblock %}
