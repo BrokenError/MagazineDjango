@@ -1,12 +1,19 @@
 {% extends 'products/base.html' %}
 {% load static %}
 
+{%block title %}Главная{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'user/css/user.css' %}">
+
 <div class="user"> 
     <ul class="user-links">
     {% for item in title_links_user %}
-    <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
+        {% if item.name == cat_selected %}
+            <a href="{% url item.link %}"><li class="categoies_selected">{{ item.name }}</li></a>
+        {% else%}
+            <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
+        {% endif %}
     {% endfor %}
     </ul>
     <div class="user-info">
@@ -14,30 +21,48 @@
             {% if user.photo %}
                 <p style="height: 56px; width:56px; border-radius:50%">{{ user.photo }}</p>
             {% else %}
-                <img src="{% static 'user/img/avatar.jpg' %}" style="height: 56px; width:56px; border-radius:50%">
+                <i class="fa-solid fa-user" style=" font-size:55px"></i>
             {% endif %}
-            {% if user.first_name %}
-                {% if user.last_name %}
-                    <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <div class="user_main_balance">
+                <div>
+                {% if user.first_name %}
+                    {% if user.last_name %}
+                        <p>{{ user.first_name }} {{ user.last_name }}</p>
+                    {% else %}
+                        <p>{{ user.first_name }}</p>
+                    {% endif %}
                 {% else %}
-                    <p>{{ user.first_name }}</p>
+                    <p>{{ user.username }}</p>
                 {% endif %}
-            {% else %}
-                <p>{{ user.username }}</p>
-            {% endif %}
-        </div>
-        <div class="user_main-body">
+                </div>
             {% if user.profile.phone_number %}
                 <p>Номер телефона: {{ user.profile.phone_number }}</p>
             {% endif %}
-            <button>Обновите пароль</button>
+                <p style='font-size:14px'>Баланс: {{ user.profile.balance }} ₽</p>
+            </div> 
         </div>
-        <div class="user_help-questions">
-            <a href="">Как пополнить баланс своего аккаунта?</a>
-            <a href="">Как оформить подарочную карту?</a>
-            <a href="">Как сменить номер телефона?</a>
-            <a href="">Как изменить пароль от аккаунта?</a>
+        <div class="user_main-body">
+            <button class="user_main-body-block none">
+                <i class="fa-solid fa-money-bill" style='font-size:30px'></i>
+                <div class="user_main-body-container">
+                    <h6>Пополнить баланс</h6>
+                    <p>Быстрое пополнение в два клика</p>
+                </div>
+            </button>
+            <button class="user_main-body-block none">
+                <i class="fa-solid fa-lock" style='font-size:30px'></i>
+                <div class="user_main-body-container">
+                    <h6>Обновите пароль</h6>
+                    <p>Безопаснее всего менять пароль хотя бы раз в полгода</p>
+                </div>
+            </button>
         </div>
+        <ul class="user_help-questions">
+            <li><a href="">Как пополнить баланс своего аккаунта?</a></li>
+            <li><a href="">Как оформить подарочную карту?</a></li>
+            <li><a href="">Как сменить номер телефона?</a></li>
+            <li><a href="">Как изменить пароль от аккаунта?</a></li>
+        </ul>
     </div>
 </div>
 {% endblock %}

@@ -1,4 +1,25 @@
 
+p{
+    margin: 0;
+}
+
+.selected{
+    color: #DD914B;
+    font-weight:500;
+}
+
+.none{
+    background-color: transparent;
+    color: black;
+}
+.none:hover{
+    color: black;
+    box-shadow: 0 0 6px rgba(217, 222, 211, 0.91);
+    border-radius: 12px;
+    transform: scale(1);
+    transition: all 0.8s ease 0s;
+}
+
 .user{
     max-width: 1200px;
     display: flex;
@@ -14,50 +35,141 @@
 
 .user-links li{
     padding: 10px;
-    background-color: #C3C3C3;
     text-align: left;
-    color: black;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .user-links li:hover{
-    transition: all 0.5s ease;
-    color: #FF1E44;
+    box-shadow: 0 0 6px rgba(217, 222, 211, 0.51);
+    border-radius: 12px;
     transform: scale(1.05);
+    transition: all 0.8s ease 0s;
 }
 
 .user-info{
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 20px;
 }
 
 .user_main-header{
     display: flex;
     flex-direction: row;
-    background-color: rgb(235, 235, 235);
-    border-radius: 10px;
+    background-color: rgba(234, 241, 227, 0.31);
+    box-shadow: 0 0 6px rgba(217, 222, 211, 0.51);
+    border-radius: 20px;
     padding: 20px;
-    gap: 20px;
+    gap: 30px;
+}
+
+.user_main_balance{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
 }
 
 .user_main-body{
-    background-color: rgb(235, 235, 235);
-    border-radius: 10px;
+    background-color: rgba(234, 241, 227, 0.31);
+    box-shadow: 0 0 6px rgba(217, 222, 211, 0.51);
+    border-radius: 20px;
     padding: 20px;
 }
 
-.user_personal-data, .user-info, .user_security{
-    width: 600px;
+.user_main-body button{
+    width: 100%;
 }
 
-.user_personal-data{
-    background-color: rgb(235, 235, 235);
+.user_main-body-container{
+    text-align: left;
+}
+
+.user_main-body p{
+    margin: 5px;
+    max-width: 400px;
+    font-size: 13px;
+}
+
+.user_main-body-block{
+    padding: 5px 20px;
+    gap:30px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 }
 
 
 .user_help-questions{
     display: flex;
     flex-direction: column;
+    background-color: rgba(234, 241, 227, 0.31);
+    box-shadow: 0 0 6px rgba(217, 222, 211, 0.51);
+    padding: 20px;
+    border-radius: 20px;
     gap:20px;
+}
+
+.user_help-questions li{
+    text-align: left;
+}
+
+
+.user_personal-data, .user-info, .user_security{
+    width: 600px;
+}
+
+.user_personal-data{
+    flex-direction: column;
+    display: flex;
+    background-color: rgba(234, 241, 227, 0.31);
+    border-radius: 30px;
+    padding: 20px;
+    gap: 30px;
+}
+
+.user_personal-header{
+    display: flex;
+    flex-direction: row;
+    gap:30px;
+}
+
+.user_personal-body{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+
+.user_personal_about{
+    display: none;
+}
+
+.user_personal-btn{
+    padding: 10px;
+}
+.user_personal-btn i{
+    margin-right: 10px;
+}
+
+.user_personal-footer{
+    display: flex;
+    flex-direction: row;
+    gap:50px;
+}
+
+.user_personal-name{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.user_personal_username{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+input{
+    max-width: 200px;
+    border: none;
+    border-bottom: 2px rgba(234, 241, 227, 1) solid;
 }

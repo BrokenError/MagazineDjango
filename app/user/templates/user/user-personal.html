@@ -1,45 +1,70 @@
 {% extends 'products/base.html' %}
 {% load static %}
 
+{%block title%}Личные данные{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'user/css/user.css' %}">
 
 <div class="user"> 
     <ul class="user-links">
-        {% for item in title_links_user %}
-        <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
-        {% endfor %}
+    {% for item in title_links_user %}
+        {% if item.name == cat_selected %}
+            <a href="{% url item.link %}"><li class="categoies_selected">{{ item.name }}</li></a>
+        {% else%}
+            <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
+        {% endif %}
+    {% endfor %}
     </ul>
     <div class="user_personal-data">
-        <div>
+        <div class="user_personal-header">
             {% if user.photo %}
                 <p>{{ user.photo }}</p>
             {% else %}
-                <img src="{% static 'user/img/avatar.jpg' %}" style="height: 72px; width:72px; border-radius:50%">
+                <i class="fa-solid fa-user" style="font-size:55px"></i>
             {% endif %}
-            {% if user.first_name %}
-                {% if user.last_name %}
-                    <p>{{ user.first_name }} {{ user.last_name }}</p>
-                {% else %}
-                    <p>{{ user.first_name }}</p>
-                {% endif %}
-            {% else %}
-                <p>{{ user.username }}</p>
-            {% endif %}
-            <div>
+            <div class="user_main_balance">
+                <div>
+                    {% if user.first_name %}
+                        {% if user.last_name %}
+                            <p>{{ user.first_name }} {{ user.last_name }}</p>
+                        {% else %}
+                            <p>{{ user.first_name }}</p>
+                        {% endif %}
+                    {% else %}
+                        <p>{{ user.username }}</p>
+                    {% endif %}
+                    </div>
                 <p>ID: {{ user.id }}</p>
-                <p>Баланс: {{ user.profile.balance }} ₽</p> <button>ПОПОЛНИТЬ</button>
             </div>
         </div>
-        <div>
-            <p>Имя: <input placeholder={{ user.first_name }}></p>
-            <p>Фамилия: <input placeholder={{ user.last_name }}></p>
-            <p>День рождение: <input placeholder={{ user.profile.birth_date }}></p>
+        <div class="user_personal-body">
+            <div class="user_personal_username">
+                <div class="user_personal-name">
+                    <p>Имя:</p>
+                    <input placeholder={{ user.first_name }}>
+                </div>
+                <div class="user_personal-name">
+                    <p>Фамилия:</p>
+                    <input placeholder={{ user.last_name }}>
+                </div>
+            </div>
+            <div class="user_personal-name">
+                <p>Дата рождения:</p>
+                <input  type="date" placeholder={{ user.profile.birth_date }}>
+            </div>
+            <div class="user_personal-name">
+                <p>Никнейм:</p>
+                <input placeholder={{ user.username }}>
+            </div>
         </div>
-        <p>Никнейм: <input placeholder={{ user.username }}></p>
-
+        <div class="user_personal-footer">
+            <button class="user_personal-btn">Сохранить</button>
+            <button class="none user_personal-btn"><i class="fa-solid fa-angles-down"></i>Подробнее</button>
+        </div>
+        {% comment %} <button class="none"><i class="fa-solid fa-circle-info"></i>Подробнее</button> {% endcomment %}
         {% comment %} ЭТО ПОДРОБНЕЕ О СЕБЕ, ЕСЛИ БУДЕТ НАЖАТА КНОПКА {% endcomment %}
-        <div>
+        <div class="user_personal_about">
             <p>Страна: <input placeholder={{ user.profile.country }}></p>
             <p>Город: <input placeholder={{ user.profile.city }}></p>
             <p>О себе: <input placeholder={{ user.profile.bio }}></p>

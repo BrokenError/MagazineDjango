@@ -1,16 +1,22 @@
 {% extends 'products/base.html' %}
 {% load static %}
 
+{%block title%}Безопасность и вход{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'user/css/user.css' %}">
 
 <div class="user"> 
     {% comment %} ЭТО БЕЗОПАСНОСТЬ И ВХОД {% endcomment %}
-    <ul class="user-links">
-        {% for item in title_links_user %}
-        <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
-        {% endfor %}
-        </ul>
+    <ul class="user-links ">
+    {% for item in title_links_user %}
+        {% if item.name == cat_selected %}
+            <a href="{% url item.link %}"><li class="categoies_selected">{{ item.name }}</li></a>
+        {% else%}
+            <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
+        {% endif %}
+    {% endfor %}
+    </ul>
     <div class="user_security">
         <div>
             <div>

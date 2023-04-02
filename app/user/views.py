@@ -11,18 +11,22 @@ context = {
     'title_links_user': [{'link': 'user', 'name':'Главная'},
                         {'link':'personal', 'name':'Личные данные'},
                         {'link':'security', 'name':'Безопасность и вход'}],
+    'cat_selected': '',
 }
 
 def user_info(request):
     context['user'] = User.objects.get(pk=request.user.id)
+    context['cat_selected'] = 'Главная'
     return render(request, 'user/user-info.html', context=context)
 
 
 def user_personal(request):
+    context['cat_selected'] = 'Личные данные'
     return render(request, 'user/user-personal.html', context=context)
 
 
 def user_security(request):
+    context['cat_selected'] = 'Безопасность и вход'
     return render(request, 'user/user-security.html', context=context)
 
 
