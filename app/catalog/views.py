@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Categories, Products
 from django.contrib.auth.forms import AuthenticationForm
 from cart.forms import CartAddProductForm
+from products.forms import LoginUserForm
+from django.contrib import auth
 
 
 context = {
-        'form':AuthenticationForm,
+        'form':LoginUserForm,
         'count': 0,
         'cat':Categories.objects.order_by('date'),
         'cart_product_form': CartAddProductForm(),

@@ -21,7 +21,19 @@ def user_info(request):
 
 
 def user_personal(request):
+    form = SaveDateUser()
+    context['form'] = form
+    print('oooooo')
     context['cat_selected'] = 'Личные данные'
+    if request.method == 'POST':
+        print('ffffffffffff')
+        form = SaveDateUser(request.POST, instance=request.user)
+        if form.is_valid():
+            print('yes')
+            form.save()
+            render(request, 'user/user-info.html', context=context)
+        else:
+            print('error')
     return render(request, 'user/user-personal.html', context=context)
 
 

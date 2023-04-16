@@ -7,8 +7,7 @@
 <link rel="stylesheet" href="{% static 'user/css/user.css' %}">
 
 <div class="user"> 
-    {% comment %} ЭТО БЕЗОПАСНОСТЬ И ВХОД {% endcomment %}
-    <ul class="user-links ">
+    <ul class="user-links">
     {% for item in title_links_user %}
         {% if item.name == cat_selected %}
             <a href="{% url item.link %}"><li class="categoies_selected">{{ item.name }}</li></a>
@@ -19,17 +18,29 @@
     </ul>
     <div class="user_security">
         <div>
-            <div>
-                {% if user.email %}
-                    <a href=""><p>Электронная почта: {{ user.email }}</p></a>
-                {% else %}
-                    <p>Электронная почта:<a href="">Привязать</a></p>
-                {% endif %}
+            <h5 style="margin:0">Данные аккаунта</h5>
+            <p style="font-size:13px">Видны только вам</p>
+        </div>
+        <div class="user_security-container">
+            <div class="user_security-about">
+                <div>
                 {% if user.profile.phone_number %}
-                    <a href=""><p>Номер телефона: {{ user.profile.phone_number }}</p></a>
+                    <p>Телефон:</p>
+                    <p>{{ user.profile.phone_number }}</p>
                 {% else %}
-                    <p>Номер телефона:<a href="">Привязать</a></p>
+                    <p>Телефон:</p>
+                    <a href="" class='a_button'>Привязать</a>
                 {% endif %}
+                </div>
+                <div>
+                {% if user.email %}
+                    <p>Электронная почта:</p>
+                    <p>{{ user.email }}</p>
+                {% else %}
+                    <p>Электронная почта:</p>
+                    <a href="">Привязать</a>
+                {% endif %}
+                </div>
             </div>
             <div>
                 <p>Последний вход: {{ user.last_login }}</p>

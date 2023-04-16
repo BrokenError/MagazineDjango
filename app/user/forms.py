@@ -16,3 +16,20 @@ class RegisterUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
+
+class SaveDateUser(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request')
+        super(SaveDateUser, self).__init__(*args, **kwargs)
+        self.user = User.objects.filter(
+            user=self.request.user)
+
+    class Meta:
+        model = User
+        fields = ("first_name", "last_name", "email")
+
+        widgets = {
+            "first_name": forms.TextInput(attrs={'placeholder': f'{ user }'})
+        }

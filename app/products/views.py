@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.db.models import Q
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, FormView
@@ -8,13 +8,14 @@ from .forms import *
 from catalog.models import Products
 
 class Login(LoginView):
-    form_class = AuthenticationForm
+    form_class = LoginUserForm
     template_name = 'products/main.html'
 
-    def get_success_url(self):
-        return reverse('magazine_home')
-
     
+    def get_success_url(self):
+        return reverse("magazine_home")
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['products_images'] = Products.objects.all()[:8]

@@ -18,19 +18,19 @@
 
                         <div class="cart_item_text">
                             <p style="font-size: 24px">{{ product.title }}</p>
-                            <form action="{% url 'cart_add' product.id %}" method="post" class="cart_item_form">
+                            <form action="{% url 'cart_add' product.id %}" method="post">
                                 {% csrf_token %}
-                                <div class="cart_item_price">
-                                    <div class="cart_count-items">
+                                <div class="cart_item_form">
+                                    <div class="cart_item_price">
+                                        <div class="cart_count-items">
                                             <p>Кол-во</p>{{ item.update_quantity_form.quantity }}{{ item.update_quantity_form.update }}
-                                            {% comment %} <div class="cart_item_text-3">  {% endcomment %}
-                                            {% comment %} </div> {% endcomment %}
+                                        </div>
+                                        <p>{{ item.total_price }} ₽</p>
                                     </div>
-                                    <p>{{ item.total_price }} ₽</p>
-                                </div>
-                                <div class="cart_item-delete-update">
-                                    <input type="submit" value="Обновить" class="a_button submit">
-                                    <a href="{% url 'cart_remove' product.id %}" class="a_button submit">Удалить</a>
+                                    <div class="cart_item-delete-update">
+                                        <input type="submit" value="Обновить">
+                                        <a href="{% url 'cart_remove' product.id %}" class="a_button submit">Удалить</a>
+                                    </div>
                                 </div>
                             </form>
                         </div>

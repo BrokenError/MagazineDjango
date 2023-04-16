@@ -5,7 +5,6 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'user/css/user.css' %}">
-
 <div class="user"> 
     <ul class="user-links">
     {% for item in title_links_user %}
@@ -38,10 +37,13 @@
                 <p>ID: {{ user.id }}</p>
             </div>
         </div>
+        <form method="post" action="{% url 'personal' %}">
+            {% csrf_token %}
         <div class="user_personal-body">
             <div class="user_personal_username">
                 <div class="user_personal-name">
                     <p>Имя:</p>
+                    {{ form.first_name }}
                     <input placeholder={{ user.first_name }}>
                 </div>
                 <div class="user_personal-name">
@@ -59,7 +61,8 @@
             </div>
         </div>
         <div class="user_personal-footer">
-            <button class="user_personal-btn">Сохранить</button>
+            <button class="user_personal-btn" type="submit">Сохранить</button>
+            </form>
             <button class="none user_personal-btn"><i class="fa-solid fa-angles-down"></i>Подробнее</button>
         </div>
         {% comment %} <button class="none"><i class="fa-solid fa-circle-info"></i>Подробнее</button> {% endcomment %}

@@ -173,3 +173,32 @@ input{
     border: none;
     border-bottom: 2px rgba(234, 241, 227, 1) solid;
 }
+
+
+.user_security{
+    background-color: rgba(234, 241, 227, 0.31);
+    box-shadow: 0 0 6px rgba(217, 222, 211, 0.51);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user_security-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.user_security-about{
+    display: flex;
+    flex-direction: row;
+    gap:50px;
+}
+
+.user_security-about div{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
