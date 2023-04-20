@@ -3,8 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import logout
 from django.views.generic.edit import FormView, CreateView
 from .forms import *
+from django.http import Http404
 from django.urls import reverse_lazy
-
+from django.contrib import messages
 
 context = {
     'user': '',
@@ -21,16 +22,16 @@ def user_info(request):
 
 
 def user_personal(request):
-    form = SaveDateUser()
-    context['form'] = form
-    print('oooooo')
+    context['user'] = User.objects.get(pk=request.user.id)
+    context['form'] = SaveDataUser()
+    context['form2'] = SaveDataProfile()
     context['cat_selected'] = 'Личные данные'
     if request.method == 'POST':
-        print('ffffffffffff')
-        form = SaveDateUser(request.POST, instance=request.user)
-        if form.is_valid():
-            print('yes')
+        form = SaveDataUser(request.POST, instance=request.user)
+        form2 = SaveDataProfile(request.POST, instance=request.user.profile)
+        if form.is_valid() and form2.is_valid():
             form.save()
+            form2.save()
             render(request, 'user/user-info.html', context=context)
         else:
             print('error')
@@ -47,6 +48,18 @@ def registration(request):
 
 def logout_user(request):
     logout(request)
+    return redirect('magazine_home')
+
+
+def delete_account(request):
+    try:
+        u = User.objects.get(pk = request.user.id)
+        u.delete()
+        messages.success(request, "Аккаунт успешно удален")
+    except User.DoesNotExist:
+        messages.error("Пользователь не найден")
+    except Exception as e:
+        raise Http404
     return redirect('magazine_home')
 
 

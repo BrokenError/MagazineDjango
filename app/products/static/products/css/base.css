@@ -279,6 +279,15 @@ ul li a:hover{
     height: 500px;
 }
 
+.links i:hover{
+    color: #DD914B;
+    transition: all 0.3s ease;
+}
+
+footer li:hover{
+    color: #DD914B;
+    transition: all 0.3s ease;
+}
 
 /* БЛОК О НАШИХ УСЛУГАХ */
 

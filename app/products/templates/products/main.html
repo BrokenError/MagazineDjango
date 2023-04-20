@@ -10,14 +10,13 @@
 
     <div class="sliderr">
         <div class="wrappel">
-
             <i class="fa-solid fa-chevron-left" style="position: absolute;" id="left"></i>
+            <i class="fa-solid fa-chevron-right" id="right"></i>
             <div class="carousel">
                 {% for item in products_images %}
                 <img src="{{ item.photo.url }}" alt="img">
                 {% endfor %}
             </div>
-            <i class="fa-solid fa-chevron-right" id="right"></i>
         </div>
     </div>
 

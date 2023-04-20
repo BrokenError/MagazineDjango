@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from .models import *
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.forms import Textarea, TextInput, DateTimeInput
 # from captcha.fields import CaptchaField
 
 
@@ -16,20 +17,15 @@ class RegisterUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+        
 
-
-class SaveDateUser(forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request')
-        super(SaveDateUser, self).__init__(*args, **kwargs)
-        self.user = User.objects.filter(
-            user=self.request.user)
-
+class SaveDataUser(forms.ModelForm):
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "email")
+        fields = ("first_name", "last_name")
 
-        widgets = {
-            "first_name": forms.TextInput(attrs={'placeholder': f'{ user }'})
-        }
+
+class SaveDataProfile(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("bio", "country", "city", "birth_date")

@@ -1,7 +1,14 @@
+input{
+    max-width: 200px;
+    border: none;
+    border-bottom: 2px rgba(234, 241, 227, 1) solid;
+}
 
 p{
     margin: 0;
 }
+
+/* СТРАНИЦА ГЛАВНАЯ */
 
 .selected{
     color: #DD914B;
@@ -113,6 +120,8 @@ p{
 }
 
 
+/* СТРАНИЦА ЛИЧНЫЕ ДАННЫЕ */
+
 .user_personal-data, .user-info, .user_security{
     width: 600px;
 }
@@ -123,7 +132,6 @@ p{
     background-color: rgba(234, 241, 227, 0.31);
     border-radius: 30px;
     padding: 20px;
-    gap: 30px;
 }
 
 .user_personal-header{
@@ -133,14 +141,11 @@ p{
 }
 
 .user_personal-body{
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap:20px;
-}
-
-
-.user_personal_about{
-    display: none;
+    margin-bottom: 20px;
 }
 
 .user_personal-btn{
@@ -162,18 +167,57 @@ p{
     gap:10px;
 }
 
+textarea{
+    height: 28px;
+    width: 200px;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    border: none;
+    border-bottom: 2px rgba(234, 241, 227, 1) solid;
+}
+
 .user_personal_username{
     display: flex;
     flex-direction: row;
     gap:10px;
 }
 
-input{
-    max-width: 200px;
-    border: none;
-    border-bottom: 2px rgba(234, 241, 227, 1) solid;
+
+.user_personal_about-hidden{
+    display: none;
 }
 
+.user_personal_about-visible{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hidden{
+    display: none;
+}
+
+.user_personal_about-header{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.user_personal_about-header div{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.user_personal_about{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* СТРАНИЦА БЕЗОПАСНОСТЬ И ВХОД */
 
 .user_security{
     background-color: rgba(234, 241, 227, 0.31);

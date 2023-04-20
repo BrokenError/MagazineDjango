@@ -11,7 +11,7 @@ class Profile(models.Model):
     profile_img = models.ImageField('Фото профиля', null=True, blank=True, upload_to="users/profile/")
     country = models.TextField('Страна', max_length=100 ,null=True, blank=True)
     city = models.TextField('Город', max_length=168 ,null=True, blank=True)
-    phoneNumber = PhoneNumberField(unique = True, null = True, blank = True)
+    phoneNumber = PhoneNumberField('Номер телефона', unique = True, null = True, blank = True)
     balance = models.DecimalField('Баланс', max_digits=8, decimal_places=2, blank=True, default=0)
 
 

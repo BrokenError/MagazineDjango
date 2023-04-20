@@ -37,42 +37,93 @@
                 <p>ID: {{ user.id }}</p>
             </div>
         </div>
-        <form method="post" action="{% url 'personal' %}">
+        <form method="post" action="{% url 'personal' %}" id="form1">
             {% csrf_token %}
         <div class="user_personal-body">
             <div class="user_personal_username">
                 <div class="user_personal-name">
-                    <p>Имя:</p>
+                    <p>Имя: 
+                        {% if user.first_name != "" %}
+                            ({{ user.first_name }})
+                        {% else %}
+                            (Не указано)  
+                        {% endif %}
+                    </p>
                     {{ form.first_name }}
-                    <input placeholder={{ user.first_name }}>
                 </div>
                 <div class="user_personal-name">
-                    <p>Фамилия:</p>
-                    <input placeholder={{ user.last_name }}>
+                    <p>Фамилия:
+                        {% if user.last_name != "" %}
+                            ({{ user.last_name }})
+                        {% else %}
+                            (Не указана) 
+                        {% endif %}
+                    </p>
+                    {{ form.last_name }}
                 </div>
             </div>
             <div class="user_personal-name">
-                <p>Дата рождения:</p>
-                <input  type="date" placeholder={{ user.profile.birth_date }}>
+                <p>Дата рождения: 
+                    {% if user.profile.birth_date %}
+                        ({{ user.profile.birth_date}})
+                    {% else %}
+                        (Не указана)
+                    {% endif %}
+                </p>
+                {{ form2.birth_date }}
             </div>
             <div class="user_personal-name">
-                <p>Никнейм:</p>
-                <input placeholder={{ user.username }}>
+                <p>Никнейм: ({{ user.username }})</p>
+                {{ form2.city }}
             </div>
         </div>
-        <div class="user_personal-footer">
-            <button class="user_personal-btn" type="submit">Сохранить</button>
+        <div class="user_personal-footer" id="block-hidden">
+            <button class="user_personal-btn" type="submit" onclick="return confirm_save()">Сохранить</button>
             </form>
-            <button class="none user_personal-btn"><i class="fa-solid fa-angles-down"></i>Подробнее</button>
+            <button class="none user_personal-btn" id="modal_open"><i class="fa-solid fa-angles-down"></i>Подробнее</button>
+        </div>
+        <div class="user_personal_about-hidden" id="more">
+            <div class="user_personal_about-header">
+                <div>
+                    <p>Страна: 
+                    {% if user.profile.country %}
+                        ({{ user.profile.country }})
+                    {% else %}
+                        (Не указана)
+                    {% endif %}
+                    </p>
+                    {{ form2.country }}
+                </div>
+                <div>
+                    <p>Город: 
+                        {% if user.profile.city %}
+                            ({{ user.profile.city }})
+                        {% else %}
+                            (Не указан)
+                        {% endif %}
+                    </p>
+                    {{ form2.city }}
+                </div>
+            </div>
+            <div class="user_personal_about">
+                <p>О себе: 
+                    {% if user.profile.bio %}
+                        </p>
+                        <p>({{ user.profile.bio }})</p>
+                    {% else %}
+                    {% endif %}
+                </p>
+                {{ form2.bio }}
+            </div>
+            <div class="user_personal-footer">
+                <button class="user_personal-btn" type="submit" onclick="return confirm_save()">Сохранить</button>
+                <button class="none user_personal-btn" id="modal_close"><i class="fa-solid fa-angles-up"></i>Скрыть</button>
+            </div>
         </div>
         {% comment %} <button class="none"><i class="fa-solid fa-circle-info"></i>Подробнее</button> {% endcomment %}
         {% comment %} ЭТО ПОДРОБНЕЕ О СЕБЕ, ЕСЛИ БУДЕТ НАЖАТА КНОПКА {% endcomment %}
-        <div class="user_personal_about">
-            <p>Страна: <input placeholder={{ user.profile.country }}></p>
-            <p>Город: <input placeholder={{ user.profile.city }}></p>
-            <p>О себе: <input placeholder={{ user.profile.bio }}></p>
-        </div>
     </div>
 </div>
 
+<script src="{% static 'user/js/personal.js' %}"></script> 
 {% endblock %}

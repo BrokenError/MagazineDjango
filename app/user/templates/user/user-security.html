@@ -24,20 +24,18 @@
         <div class="user_security-container">
             <div class="user_security-about">
                 <div>
-                {% if user.profile.phone_number %}
                     <p>Телефон:</p>
+                {% if user.profile.phone_number %}
                     <p>{{ user.profile.phone_number }}</p>
                 {% else %}
-                    <p>Телефон:</p>
-                    <a href="" class='a_button'>Привязать</a>
+                    <a href="" class=''>Привязать</a>
                 {% endif %}
                 </div>
                 <div>
-                {% if user.email %}
                     <p>Электронная почта:</p>
+                {% if user.email %}
                     <p>{{ user.email }}</p>
                 {% else %}
-                    <p>Электронная почта:</p>
                     <a href="">Привязать</a>
                 {% endif %}
                 </div>
@@ -49,7 +47,7 @@
         </div>
         <div>
             <a href="{% url 'logout' %}">Выйти?</a>
-            <a href="">Удалить аккаунт?</a>
+            <a href="{% url 'delete-account' %}" class="delete-account"><button onclick="return destroy()">Удалить аккаунт?</button></a>
         </div>
     </div>
     {% comment %} <div>
@@ -59,4 +57,12 @@
 
     {% comment %} РЕАЛИЗОВАТЬ МОДАЛЬНОЕ ОКНО ГДЕ БУДЕТ ПОДТВЕРЖДЕНИЕ ДЕЙСТВИЯ ДЛЯ ПЕРЕХОДА К УДАЛЕНИЮ {% endcomment %}
 </div>
+<script type="text/javascript"> 
+    function destroy()
+    {
+        if (confirm("Bы уверены, что хотите уничтожить свой аккаунт?"))
+        return true;
+        else return false;
+     }
+</script>
 {% endblock %}
