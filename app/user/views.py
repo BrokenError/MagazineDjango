@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import logout
 from django.views.generic.edit import FormView, CreateView
 from .forms import *
+from . import verify
 from django.http import Http404
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -49,6 +50,34 @@ def registration(request):
 def logout_user(request):
     logout(request)
     return redirect('magazine_home')
+
+
+def verify_code(request):
+    if request.method == 'POST':
+        form2 = AddPhone(request.POST, instance=request.user.profile)
+        form = VerifyForm(request.POST)
+        context['verify'] = form
+        context['phone'] = form2
+
+        if form2.is_valid():
+            print('phone')
+            request.user.profile.save()
+            phone = request.user.profile.phoneNumber
+            verify.send()
+
+        print('yes')
+        if form.is_valid():
+            code = form.cleaned_data.get('code')
+            print('yep')
+            print(verify.check(request.user.profile.phoneNumber, code))
+            if True:
+                print('oyyy')
+                request.user.is_phone_verified = True
+                request.user.save()
+                return redirect('magazine_home')
+    else:
+        form = VerifyForm()
+    return render(request, 'user/verify.html', context=context)
 
 
 def delete_account(request):

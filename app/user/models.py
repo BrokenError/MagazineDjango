@@ -12,6 +12,7 @@ class Profile(models.Model):
     country = models.TextField('Страна', max_length=100 ,null=True, blank=True)
     city = models.TextField('Город', max_length=168 ,null=True, blank=True)
     phoneNumber = PhoneNumberField('Номер телефона', unique = True, null = True, blank = True)
+    is_phone_verified = models.BooleanField(default=False)
     balance = models.DecimalField('Баланс', max_digits=8, decimal_places=2, blank=True, default=0)
 
 

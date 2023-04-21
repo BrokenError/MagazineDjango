@@ -1,0 +1,12 @@
+<h1>Verify your account</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ phone.as_p }}
+    <button type="submit">Добавить телефон</button>
+  </form>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ verify.as_p }}
+    <button type="submit">Verify</button>
+  </form>

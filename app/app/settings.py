@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'catalog',
     'user',
     'cart',
+    'phone_verify',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,3 +140,18 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+PHONE_VERIFICATION = {
+    'BACKEND': 'phone_verify.backends.twilio.TwilioBackend',
+    'TWILIO_SANDBOX_TOKEN':'123456',
+    'OPTIONS': {
+        'SID': 'fake',
+        'SECRET': 'fake',
+        'FROM': '+14755292729'
+    },
+    'TOKEN_LENGTH': 6,
+    'MESSAGE': 'Welcome to {app}! Please use security code {otp} to proceed.',
+    'APP_NAME': 'Phone Verify',
+    'OTP_EXPIRATION_TIME': 3600  # In seconds only
+}

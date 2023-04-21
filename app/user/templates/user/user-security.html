@@ -28,7 +28,7 @@
                 {% if user.profile.phone_number %}
                     <p>{{ user.profile.phone_number }}</p>
                 {% else %}
-                    <a href="" class=''>Привязать</a>
+                    <a href="{% url 'verify' %}" class=''>Привязать</a>
                 {% endif %}
                 </div>
                 <div>
@@ -37,6 +37,7 @@
                     <p>{{ user.email }}</p>
                 {% else %}
                     <a href="">Привязать</a>
+
                 {% endif %}
                 </div>
             </div>
@@ -50,12 +51,6 @@
             <a href="{% url 'delete-account' %}" class="delete-account"><button onclick="return destroy()">Удалить аккаунт?</button></a>
         </div>
     </div>
-    {% comment %} <div>
-        <p>Подтвердите свой выбор:</p><input type="checkbox" id="scales" name="scales" checked>
-        <button>Подтвердить</button>
-    </div> {% endcomment %}
-
-    {% comment %} РЕАЛИЗОВАТЬ МОДАЛЬНОЕ ОКНО ГДЕ БУДЕТ ПОДТВЕРЖДЕНИЕ ДЕЙСТВИЯ ДЛЯ ПЕРЕХОДА К УДАЛЕНИЮ {% endcomment %}
 </div>
 <script type="text/javascript"> 
     function destroy()
