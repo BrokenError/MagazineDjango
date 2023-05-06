@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="main">
-
+    {% if products_images|length > 0 %}
     <div class="sliderr">
         <div class="wrappel">
             <i class="fa-solid fa-chevron-left" style="position: absolute;" id="left"></i>
@@ -19,6 +19,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <div class="block-services">
         <p style="font-size: 35px; font-weight: bold; display: flex; justify-content: center; color:#DD914B">НАШИ УСЛУГИ</p><br>

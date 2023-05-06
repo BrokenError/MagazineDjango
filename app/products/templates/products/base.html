@@ -43,31 +43,40 @@
 
     <main>              
 
-    {% if not user.is_authenticated %}
-    <form method="POST" action="{% url 'magazine_home' %}">
-    <div>{{ form.non_field_errors }}</div>
-        <div id="popup" class="popup">
-            <div class="popup__body">
-                <div class="popup__content">
-                    <div class="modal-container__signin">
-                        <a href="" class="popup__close" style="margin:40px; color:white; font-size: 22px;">X</a>
-                        <div class="modal-signin">
-                            <a href="#popup" class="popup-link modal-signin-selected">Вход</a>
-                            <a href="{% url 'registration' %}">Регистрация</a>
-                        </div>
-                        <div class="modal-inputs__signin">
-                                {% for f in form %}
+    {% if user.is_authenticated %}
+    {% else %}
+        <form method="POST" action="{% url 'magazine_home' %}">
+            <div id="popup" class="popup">
+                <div class="popup__body">
+                    <div class="popup__content">
+                        <div class="modal-container__signin">
+                            <a href="" class="popup__close" style="margin:40px; font-size: 22px;">X</a>
+                            <div class="modal-signin">
+                                <a href="#popup" class="popup-link modal-signin-selected">Вход</a>
+                                <a href="#popup" class="popup-link modal-window-header">Регистрация</a>
+                            </div>
+                            <div class="modal-inputs__signin">
+                                    {% for f in form %}
+                                    <div class="modal-input">
+                                        <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
+                                        {{ f }}
+                                    </div>
+                                    {% endfor %}
+                                    {% csrf_token %}
+                            {% comment %} <div class="modal-inputs__signup">
+                                {% for f in login %}
                                 <div class="modal-input">
                                     <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
                                     {{ f }}
                                 </div>
                                 {% endfor %}
-                                {% csrf_token %}
+                                {% csrf_token %} {% endcomment %}
                         </div>
-                        <div class="modal-submit">
-                            <button type="submit" name="login">Войти</button>
-                            </form>
-                            <a href="{% url 'registration' %}">нет аккаунта?</a>
+                            <div class="modal-submit">
+                                <button type="submit" name="login">Войти</button>
+                                </form>
+                                <a href="{% url 'registration' %}">нет аккаунта?</a>
+                            </div>
                         </div>
                     </div>
                 </div>

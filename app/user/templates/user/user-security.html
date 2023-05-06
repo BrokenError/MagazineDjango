@@ -28,7 +28,7 @@
                 {% if user.profile.phone_number %}
                     <p>{{ user.profile.phone_number }}</p>
                 {% else %}
-                    <a href="{% url 'verify' %}" class=''>Привязать</a>
+                    <a href="#popup" class="popup-link" class=''>Привязать</a>
                 {% endif %}
                 </div>
                 <div>
@@ -51,6 +51,38 @@
             <a href="{% url 'delete-account' %}" class="delete-account"><button onclick="return destroy()">Удалить аккаунт?</button></a>
         </div>
     </div>
+
+
+    <form method="POST" action="{% url 'verify' %}">
+        <div>{{ verify.non_field_errors }}</div>
+            <div id="popup" class="popup">
+                <div class="popup__body">
+                    <div class="popup__content">
+                        <div class="modal-container__signin">
+                            <a href="" class="popup__close" style="margin:40px; color:white; font-size: 22px;">X</a>
+                            <div class="modal-signin">
+                                <a>Подтверждение номера телефона</a>
+                            </div>
+                            <div class="modal-inputs__signin">
+                                    {% for f in form %}
+                                    <div class="modal-input">
+                                        <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
+                                        {{ f }}
+                                    </div>
+                                    {% endfor %}
+                                    {% csrf_token %}
+                            </div>
+                            <div class="modal-submit">
+                                <button type="submit" name="login">Подтвердить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 </div>
 <script type="text/javascript"> 
     function destroy()

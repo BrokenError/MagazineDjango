@@ -51,33 +51,40 @@ def logout_user(request):
     logout(request)
     return redirect('magazine_home')
 
+# НУЖНА УЧЕТНАЯ ЗАПИСЬ TWILIO
+
+# def verify_code(request):
+#     if request.method == 'POST':
+#         form2 = AddPhone(request.POST, instance=request.user.profile)
+#         form = VerifyForm(request.POST)
+#         context['verify'] = form
+#         context['phone'] = form2
+
+#         if form2.is_valid():
+#             request.user.profile.save()
+#             phone = request.user.profile.phoneNumber
+#             verify.send(phone)
+
+#         if form.is_valid():
+#             code = form.cleaned_data.get('code')
+#             if True:
+#                 request.user.is_phone_verified = True
+#                 request.user.save()
+#                 return redirect('magazine_home')
+#     else:
+#         form = VerifyForm()
+#     return render(request, 'user/verify.html', context=context)
 
 def verify_code(request):
     if request.method == 'POST':
-        form2 = AddPhone(request.POST, instance=request.user.profile)
-        form = VerifyForm(request.POST)
-        context['verify'] = form
-        context['phone'] = form2
-
-        if form2.is_valid():
-            print('phone')
-            request.user.profile.save()
-            phone = request.user.profile.phoneNumber
-            verify.send()
-
-        print('yes')
+        form = AddPhone(request.POST, instance=request.user.profile)
         if form.is_valid():
-            code = form.cleaned_data.get('code')
-            print('yep')
-            print(verify.check(request.user.profile.phoneNumber, code))
-            if True:
-                print('oyyy')
-                request.user.is_phone_verified = True
-                request.user.save()
-                return redirect('magazine_home')
-    else:
-        form = VerifyForm()
+            request.user.is_phone_verified = True
+            request.user.save()
+            return redirect('magazine_home')
+
     return render(request, 'user/verify.html', context=context)
+    # return redirect('user')
 
 
 def delete_account(request):

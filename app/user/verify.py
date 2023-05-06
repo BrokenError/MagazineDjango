@@ -1,17 +1,22 @@
 import os
 from twilio.rest import Client
-from twilio.base.exceptions import TwilioRestException
+from twilio.base.exceptions import TwilioRestException, TwilioException
 
 account_sid=os.environ['TWILIO_ACCOUNT_SID']='value of sid'
-auth_token=os.environ['TWILIO_AUTH_TOKEN']='value of auth token'
-service=os.environ['TWILIO_VERIFY_SERVICE_SID']='valu of service'
+auth_token=os.environ['TWILIO_AUTH_TOKEN']='<your Twilio Auth Token here>'
+service=os.environ['TWILIO_VERIFY_SERVICE_ID']='<your Twilio Verify Service SID here>'
 
 client = Client(account_sid, auth_token)
 verify = client.verify.services(service)
 
 
-def send():
-    verify.verifications.create(to='+79897046544', channel='sms')
+def send(phone):
+    try:
+        verify.verifications.create(to=phone, channel='sms')
+    except TwilioException:
+        verify.verifications.create(to=phone, channel='call')
+    except Exception as e:
+        print ('не удалось')
 
 
 def check(phone, code):
