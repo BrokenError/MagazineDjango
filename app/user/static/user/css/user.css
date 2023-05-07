@@ -28,16 +28,22 @@ p{
 }
 
 .user{
-    max-width: 1200px;
+
+    /* max-width: 1200px; */
     display: flex;
     flex-direction: row;
     gap:60px;
+}
+
+.user:nth-child(2) {
+    width: 950px;
 }
 
 .user-links{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 5px;
 }
 
 .user-links li{
@@ -245,4 +251,76 @@ textarea{
     display: flex;
     flex-direction: column;
     gap:10px;
+}
+
+/* Модальные окна добавления почты и телефона */
+
+.modal-container__verify{
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    width: 400px;
+    max-height: 900px;
+
+    margin: 20px auto;
+    padding: 45px 35px 31px 32px;
+
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.modal-verify{
+    font-size: 20px;
+
+}
+
+.modal-inputs__verify{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.modal-inputs{
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-inputs label{
+    font-size: 12px;
+}
+
+.modal-inputs input{
+    border-bottom: 1px rgba(0, 0, 0, 0.9) solid;
+}
+
+.modal-submit__verify{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 33px;
+
+    align-items: center;
+}
+
+.modal-submit__verify button{
+    padding: 3px 10px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 1);
+
+    background: rgba(31, 31, 31, 0.59);
+    border-radius: 10px;
 }

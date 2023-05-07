@@ -34,7 +34,7 @@ class SaveDataProfile(forms.ModelForm):
 class AddPhone(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ("phoneNumber", "bio")
+        fields = ("phoneNumber",)
 
 
 class VerifyForm(forms.Form):

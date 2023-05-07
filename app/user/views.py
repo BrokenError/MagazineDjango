@@ -41,11 +41,8 @@ def user_personal(request):
 
 def user_security(request):
     context['cat_selected'] = 'Безопасность и вход'
+    context['verify'] = AddPhone()
     return render(request, 'user/user-security.html', context=context)
-
-
-def registration(request):
-    return render(request, 'user/registration.html')
 
 def logout_user(request):
     logout(request)
@@ -97,9 +94,3 @@ def delete_account(request):
     except Exception as e:
         raise Http404
     return redirect('magazine_home')
-
-
-class RegisterUser(CreateView):
-    form_class = RegisterUserForm
-    template_name = 'user/registration.html'
-    success_url = reverse_lazy('magazine_home')

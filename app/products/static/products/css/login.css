@@ -62,12 +62,13 @@ a.text {
 }
 
 .modal-container__signin {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 120px;
 
     width: 600px;
-    height: 700px;
+    max-height: 700px;
 
     margin: 20px auto;
     padding: 62px 55px 91px 62px;
@@ -95,7 +96,7 @@ a.text {
     color: black;
     text-decoration: none;
     transform: scale(1.05);
-    border-bottom: 1px #FF1E44 solid;
+    border-bottom: 1px #DD914B solid;
 }
 
 .modal-signin a, .modal-signup a{
@@ -103,10 +104,10 @@ a.text {
 }
 
 .modal-signin a:hover{
-    color: #FF1E44;
+    color: #DD914B;
     text-decoration: none;
     transform: scale(1.05);
-    border-bottom: 1px #FF1E44 solid;
+    border-bottom: 1px #DD914B solid;
 }
 
 .modal-inputs__signin {
@@ -167,20 +168,26 @@ a.text {
 /* РЕГИСТРАЦИЯ */
 
 .modal-container__signup {
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 60px;
 
     width: 600px;
-    height: 700px;
+    max-height: 900px;
+
+    margin: 20px auto;
+    padding: 62px 55px 51px 62px;
+
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
 }
 
 .modal-signup {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 41px;
+    gap: 40px;
 
     font-style: normal;
     font-weight: 400;

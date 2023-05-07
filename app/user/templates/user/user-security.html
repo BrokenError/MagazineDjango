@@ -25,10 +25,10 @@
             <div class="user_security-about">
                 <div>
                     <p>Телефон:</p>
-                {% if user.profile.phone_number %}
-                    <p>{{ user.profile.phone_number }}</p>
+                {% if user.profile.phoneNumber %}
+                    <p>{{ user.profile.phoneNumber }}</p>
                 {% else %}
-                    <a href="#popup" class="popup-link" class=''>Привязать</a>
+                    <a href="#popup3" class="popup-link" class=''>Привязать</a>
                 {% endif %}
                 </div>
                 <div>
@@ -36,7 +36,7 @@
                 {% if user.email %}
                     <p>{{ user.email }}</p>
                 {% else %}
-                    <a href="">Привязать</a>
+                    <a href="#popup3" class="popup-link" class=''>Привязать</a>
 
                 {% endif %}
                 </div>
@@ -55,24 +55,23 @@
 
     <form method="POST" action="{% url 'verify' %}">
         <div>{{ verify.non_field_errors }}</div>
-            <div id="popup" class="popup">
+            <div id="popup3" class="popup">
                 <div class="popup__body">
                     <div class="popup__content">
-                        <div class="modal-container__signin">
-                            <a href="" class="popup__close" style="margin:40px; color:white; font-size: 22px;">X</a>
-                            <div class="modal-signin">
+                        <div class="modal-container__verify">
+                            <div class="modal-verify">
                                 <a>Подтверждение номера телефона</a>
                             </div>
-                            <div class="modal-inputs__signin">
-                                    {% for f in form %}
-                                    <div class="modal-input">
-                                        <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
+                            <div class="modal-inputs__verify">
+                                    {% for f in verify %}
+                                    <div class="modal-inputs">
                                         {{ f }}
+                                        <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
                                     </div>
                                     {% endfor %}
                                     {% csrf_token %}
                             </div>
-                            <div class="modal-submit">
+                            <div class="modal-submit__verify">
                                 <button type="submit" name="login">Подтвердить</button>
                                 </form>
                             </div>
