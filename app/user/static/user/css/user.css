@@ -1,6 +1,7 @@
 input{
     max-width: 200px;
     border: none;
+    outline: none;
     border-bottom: 2px rgba(234, 241, 227, 1) solid;
 }
 
@@ -156,6 +157,7 @@ p{
 
 .user_personal-btn{
     padding: 10px;
+    border-radius: 10px;
 }
 .user_personal-btn i{
     margin-right: 10px;
@@ -253,6 +255,21 @@ textarea{
     gap:10px;
 }
 
+.user_logout{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.user_bind-info:hover{
+    color: #DD914B;
+    text-decoration: none;
+}
+
+.delete-account{
+    padding: 3px 7px;
+}
+
 /* Модальные окна добавления почты и телефона */
 
 .modal-container__verify{
@@ -300,6 +317,7 @@ textarea{
 
 .modal-inputs input{
     border-bottom: 1px rgba(0, 0, 0, 0.9) solid;
+    outline: none;
 }
 
 .modal-submit__verify{

@@ -118,6 +118,7 @@ a.text {
 }
 
 .modal-input {
+    outline: none;
     display: flex;
     flex-direction: column;
     gap: 28px;

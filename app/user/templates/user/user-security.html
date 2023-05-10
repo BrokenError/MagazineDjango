@@ -28,7 +28,7 @@
                 {% if user.profile.phoneNumber %}
                     <p>{{ user.profile.phoneNumber }}</p>
                 {% else %}
-                    <a href="#popup3" class="popup-link" class=''>Привязать</a>
+                    <a href="#popup3" class="user_bind-info popup-link">Привязать</a>
                 {% endif %}
                 </div>
                 <div>
@@ -36,7 +36,7 @@
                 {% if user.email %}
                     <p>{{ user.email }}</p>
                 {% else %}
-                    <a href="#popup3" class="popup-link" class=''>Привязать</a>
+                    <a href="#popup3" class="user_bind-info popup-link">Привязать</a>
 
                 {% endif %}
                 </div>
@@ -46,9 +46,9 @@
                 <p>Зарегистрированы: {{ user.date_joined }}</p>
             </div>
         </div>
-        <div>
-            <a href="{% url 'logout' %}">Выйти?</a>
-            <a href="{% url 'delete-account' %}" class="delete-account"><button onclick="return destroy()">Удалить аккаунт?</button></a>
+        <div class="user_logout">
+            <a href="{% url 'logout' %}"><button onclick="return destroy2()" class="delete-account">Выйти</button></a>
+            <a href="{% url 'delete-account' %}"><button onclick="return destroy()" class="delete-account">Удалить аккаунт</button></a>
         </div>
     </div>
 
@@ -89,6 +89,14 @@
         if (confirm("Bы уверены, что хотите уничтожить свой аккаунт?"))
         return true;
         else return false;
-     }
+    }
+</script>
+<script type="text/javascript">
+    function destroy2()
+    {
+        if (confirm("Вы уверены, что хотите выйти?\nПри выходе товары в корзине не сохранятся!"))
+        return true;
+        else return false;
+    }
 </script>
 {% endblock %}
