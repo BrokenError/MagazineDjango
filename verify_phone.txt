@@ -1,0 +1,24 @@
+# НУЖНА УЧЕТНАЯ ЗАПИСЬ TWILIO
+
+# def verify_code(request):
+#     if request.method == 'POST':
+#         form2 = AddPhone(request.POST, instance=request.user.profile)
+#         form = VerifyForm(request.POST)
+#         context['verify'] = form
+#         context['phone'] = form2
+
+#         if form2.is_valid():
+#             request.user.profile.save()
+#             phone = request.user.profile.phoneNumber
+#             verify.send(phone)
+
+#         if form.is_valid():
+#             code = form.cleaned_data.get('code')
+#             if True:
+#                 request.user.is_phone_verified = True
+#                 request.user.save()
+#                 return redirect('magazine_home')
+#     else:
+#         form = VerifyForm()
+#     return render(request, 'user/verify.html', context=context)
+

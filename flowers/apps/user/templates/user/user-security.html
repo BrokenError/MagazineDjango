@@ -1,0 +1,96 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{%block title%}Безопасность и вход{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'user/css/user.css' %}">
+
+<div class="user"> 
+    <ul class="user-links">
+    {% for item in title_links_user %}
+        {% if item.name == cat_selected %}
+            <a href="{% url item.link %}"><li class="categoies_selected">{{ item.name }}</li></a>
+        {% else%}
+            <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <div class="user_security">
+        <div>
+            <h5 style="margin:0">Данные аккаунта</h5>
+            <p style="font-size:13px">Видны только вам</p>
+        </div>
+        <div class="user_security-container">
+            <div class="user_security-about">
+                <div>
+                    <p>Телефон:</p>
+                {% if user.profile.phoneNumber %}
+                    <p>{{ user.profile.phoneNumber }}</p>
+                {% else %}
+                    <a href="#popup3" class="user_bind-info popup-link">Привязать</a>
+                {% endif %}
+                </div>
+                <div>
+                    <p>Электронная почта:</p>
+                {% if user.email %}
+                    <p>{{ user.email }}</p>
+                {% else %}
+                    <a href="#popup3" class="user_bind-info popup-link">Привязать</a>
+
+                {% endif %}
+                </div>
+            </div>
+            <div>
+                <p>Последний вход: {{ user.last_login }}</p>
+                <p>Зарегистрированы: {{ user.date_joined }}</p>
+            </div>
+        </div>
+        <div class="user_logout">
+            <a href="{% url 'logout' %}"><button onclick="return destroy2()" class="delete-account">Выйти</button></a>
+            <a href="{% url 'delete-account' %}"><button onclick="return destroy()" class="delete-account">Удалить аккаунт</button></a>
+        </div>
+    </div>
+
+
+    <form method="POST" action="{% url 'verify' %}">
+        <div>{{ verify.non_field_errors }}</div>
+            <div id="popup3" class="popup">
+                <div class="popup__body">
+                    <div class="popup__content">
+                        <div class="modal-container__verify">
+                            <div class="modal-verify">
+                                <a>Подтверждение номера телефона</a>
+                                <h6>Ввод телефона начинайте с + </h6>
+                            </div>
+                            <div class="modal-inputs__verify">
+                                    {% for f in verify %}
+                                    <div class="modal-inputs">
+                                        {{ f }}
+                                        <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
+                                    </div>
+                                    {% endfor %}
+                                    {% csrf_token %}
+                            </div>
+                            <div class="modal-submit__verify">
+                                <button type="submit" name="login">Подтвердить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+</div>
+<script type="text/javascript"> 
+    function destroy()
+    {
+        return confirm("Bы уверены, что хотите уничтожить свой аккаунт?");
+    }
+</script>
+<script type="text/javascript">
+    function destroy2()
+    {
+        return confirm("Вы уверены, что хотите выйти?\nПри выходе товары в корзине не сохранятся!");
+    }
+</script>
+{% endblock %}

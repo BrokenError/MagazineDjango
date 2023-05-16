@@ -1,0 +1,212 @@
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+    transition: all 0.8s ease 0s;
+}
+
+.popup__body{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+
+.modal-container__signin a{
+    color: black;
+}
+
+.popup__close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #000;
+    text-decoration: none;
+}
+
+.popup.open{
+    opacity: 1;
+    visibility: visible;
+}
+.popup.open .popup__content {
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+}
+.popup__area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+body.lock {
+    overflow: hidden;
+}
+
+
+/* ВХОД */
+
+a.text:active,
+a.text:hover,
+a.text {
+  text-decoration: none;
+  color: black;
+}
+
+.modal-container__signin {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+
+    width: 600px;
+    max-height: 700px;
+
+    margin: 20px auto;
+    padding: 62px 55px 91px 62px;
+
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.modal-signin {
+    display: flex;
+    flex-direction: row;
+    gap: 41px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: rgba(1, 1, 1, 1)
+}
+
+
+.modal-signin-selected{
+    color: black;
+    text-decoration: none;
+    transform: scale(1.05);
+    border-bottom: 1px #DD914B solid;
+}
+
+.modal-signin a, .modal-signup a{
+    color: black;
+}
+
+.modal-signin a:hover{
+    color: #DD914B;
+    text-decoration: none;
+    transform: scale(1.05);
+    border-bottom: 1px #DD914B solid;
+}
+
+.modal-inputs__signin {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.modal-input {
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.modal-input input {
+    width: 289px;
+    border: none;
+    border-bottom: 1px solid  black;
+    outline: none;
+    background: none;
+}
+
+.modal-input label {
+    color: rgba(0, 0, 0, 1);
+}
+
+.modal-submit {
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+
+    align-items: center;
+}
+
+.modal-submit button {
+    padding: 5px 92px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 1);
+
+    background: rgba(31, 31, 31, 0.59);
+    border-radius: 60px;
+}
+
+.modal-submit a {
+    color: black;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration: solid underline #DD914B 1px;
+}
+
+/* РЕГИСТРАЦИЯ */
+
+.modal-container__signup {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    width: 600px;
+    max-height: 900px;
+
+    margin: 20px auto;
+    padding: 62px 55px 51px 62px;
+
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.modal-signup {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: rgba(255, 255, 255, 0.59)
+}
+
+.modal-inputs__signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.modal-submit a:hover{
+    color: #DD914B;
+    text-decoration: none;
+    transform: scale(1.05);
+}
