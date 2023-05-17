@@ -50,6 +50,7 @@
                 <p style="margin: 0 auto;">ЗДЕСЬ ПОКА НИЧЕГО НЕТ</p>
         {% endfor %}
     </div>
+    {% include 'catalog/paginator.html' with page=posts %}
 </div>
 <script type="text/javascript">
     function destroy()

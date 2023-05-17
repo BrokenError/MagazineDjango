@@ -1,17 +1,16 @@
-from apps.products.forms import LoginUserForm, RegisterUserForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
 from django.contrib.auth.views import LoginView
 from django.http import Http404
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.contrib.auth import  authenticate, login
 from django.views.generic.edit import CreateView
 
+from apps.products.forms import LoginUserForm, RegisterUserForm
 from .forms import SaveDataUser, SaveDataProfile, AddPhone
-
 
 context = {
     'user': '',
