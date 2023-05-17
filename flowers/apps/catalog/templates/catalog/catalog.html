@@ -32,7 +32,8 @@
                             <button class="btn-catalog" type="submit" style='margin-left:30px'>В корзину</button>
                         </form>
                         {% else %}
-                            <button class="btn-catalog" style='margin-left:30px' onclick="return destroy()">В корзину</button>
+                            <a href="#popup" class="popup-link">
+                                <button class="btn-catalog" style='margin-left:30px'>В корзину</button></a>
                         {% endif %}
                     </div>
                 </div>
