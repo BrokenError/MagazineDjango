@@ -17,10 +17,10 @@ context = {
 def magazine_catalog(request):
     context['cat_selected'] = 'Каталог'
     prod = Products.objects.order_by('date_created')
-    # paginator = Paginator(prod, 21)
-    # page_number = request.GET.get('page', 1)
+    paginator = Paginator(prod, 21)
+    page_number = request.GET.get('page', 1)
     context['prod'] = prod
-    # context['posts'] = paginator.page(page_number)
+    context['posts'] = paginator.page(page_number)
     return render(request, 'catalog/catalog.html', context=context)
 
 

@@ -1,50 +1,16 @@
-from apps.products.forms import LoginUserForm, RegisterUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
 from django.http import Http404
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 
-from .forms import *
-
-
-class SignupLoginView(FormView):
-    template_name = 'products/main.html'
-    success_url = "/"
-    form_class = LoginUserForm
-    second_form_class = RegisterUserForm
-
-    def get_context_data(self, **kwargs):
-        context = super(SignupLoginView, self).get_context_data(**kwargs)
-        if 'form' not in context:
-            context['form'] = self.form_class()
-        if 'form2' not in context:
-            context['form2'] = self.second_form_class()
-        return context
-
-    def form_invalid(self, **kwargs):
-        return self.render_to_response(self.get_context_data(**kwargs))
-
-    def post(self, request, *args, **kwargs):
-        if 'form' in request.POST:
-            form_class = self.get_form_class()
-            form_name = 'form'
-        else:
-            form_class = self.second_form_class
-            form_name = 'form2'
-        # TODO nested IF
-        form = self.get_form(form_class)
-        if form.is_valid() and 'password2' not in form.data:
-            user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
-            if user is not None:
-                login(request, user)
-            else:
-                form.save()
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(**{form_name: form})
-
+from apps.products.forms import LoginUserForm, RegisterUserForm
+from .forms import SaveDataUser, SaveDataProfile, AddPhone
 
 context = {
     'user': '',
@@ -53,6 +19,35 @@ context = {
                          {'link': 'security', 'name': 'Безопасность и вход'}],
     'cat_selected': '',
 }
+
+
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'user/register.html'
+    success_url = ""
+
+    def form_valid(self, form):
+        form.save()
+        return super(RegisterUser, self).form_valid(form)
+
+    def form_invalid(self, form):
+        return super(RegisterUser, self).form_invalid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('magazine_home')
+
+
+class LoginUser(LoginView):
+    form_class = LoginUserForm
+    template_name = 'products/main.html'
+
+    def form_valid(self, form):
+        username = self.request.POST["username"]
+        password = self.request.POST["password"]
+        user = authenticate(self.request, username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+        return HttpResponseRedirect(self.request.META.get('HTTP_REFERER'))
 
 
 def user_info(request):
