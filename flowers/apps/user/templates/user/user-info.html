@@ -10,9 +10,9 @@
     <ul class="user-links">
     {% for item in title_links_user %}
         {% if item.name == cat_selected %}
-            <a href="{% url 'item.link' %}"><li class="categoies_selected">{{ item.name }}</li></a>
+            <a href="{% url item.link %}"><li class="categoies_selected">{{ item.name }}</li></a>
         {% else%}
-            <a href="{% url 'item.link' %}"><li>{{ item.name }}</li></a>
+            <a href="{% url item.link %}"><li>{{ item.name }}</li></a>
         {% endif %}
     {% endfor %}
     </ul>
