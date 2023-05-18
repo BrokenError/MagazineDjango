@@ -312,7 +312,18 @@ textarea{
 }
 
 .modal-inputs label{
-    font-size: 12px;
+    font-size: 16px;
+}
+
+.modal-inputs li{
+    list-style: circle;
+    font-size: 13px;
+    align-items: baseline;
+    text-align: left;
+}
+
+.modal-inputs li::marker{
+    color: #DD914B;
 }
 
 .modal-inputs input{
