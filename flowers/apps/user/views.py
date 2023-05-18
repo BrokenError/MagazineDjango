@@ -1,10 +1,9 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
-from django.http import Http404
-from django.http import HttpResponseRedirect
+from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
@@ -50,9 +49,25 @@ class LoginUser(LoginView):
         return HttpResponseRedirect(self.request.META.get('HTTP_REFERER'))
 
 
+class ChangePassword(PasswordChangeView):
+    form_class = SetPasswordForm
+    template_name = 'user/user-info.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title_links_user'] = [{'link': 'user', 'name': 'Главная'},
+                                       {'link': 'personal', 'name': 'Личные данные'},
+                                       {'link': 'security', 'name': 'Безопасность и вход'}]
+        context['title'] = 'Изменение пароля на сайте'
+        context['user'] = User.objects.get(pk=self.request.user.id)
+        context['cat_selected'] = 'Главная'
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('user')
+
+
 def user_info(request):
-    context['user'] = User.objects.get(pk=request.user.id)
-    context['cat_selected'] = 'Главная'
     return render(request, 'user/user-info.html', context=context)
 
 

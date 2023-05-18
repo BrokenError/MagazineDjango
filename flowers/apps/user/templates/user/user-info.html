@@ -49,13 +49,15 @@
                     <p>Быстрое пополнение в два клика</p>
                 </div>
             </button>
-            <button class="user_main-body-block none">
+            <a href="#popup4" class="user_bind-info popup-link">
+                <button class="user_main-body-block none">
                 <i class="fa-solid fa-lock" style='font-size:30px'></i>
                 <div class="user_main-body-container">
                     <h6>Обновите пароль</h6>
                     <p>Безопаснее всего менять пароль хотя бы раз в полгода</p>
                 </div>
-            </button>
+                </button>
+            </a>
         </div>
         <ul class="user_help-questions">
             <li><a href="">Как пополнить баланс своего аккаунта?</a></li>
@@ -64,5 +66,28 @@
             <li><a href="">Как изменить пароль от аккаунта?</a></li>
         </ul>
     </div>
+    <form method="POST" action="">
+        <div>{{ verify.non_field_errors }}</div>
+            <div id="popup4" class="popup">
+                <div class="popup__body">
+                    <div class="popup__content">
+                        <div class="modal-container__verify" style="align-items: baseline">
+                            <div class="modal-verify">
+                                <h5>Обновление пароля</h5>
+                            </div>
+                            <div class="modal-inputs__verify">
+                                {% csrf_token %}
+                                <div class="modal-inputs" style="max-width: 400px; align-items: baseline">
+                                    {{ form.as_p }}
+                                </div>
+                            </div>
+                            <div class="modal-submit__verify">
+                                <button type="submit" name="login">Подтвердить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
 </div>
 {% endblock %}
