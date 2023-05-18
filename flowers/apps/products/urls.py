@@ -1,6 +1,5 @@
 from django.urls import path, include
-from apps.user.views import RegisterUser, LoginUser
-from django.contrib.auth.views import LoginView
+from apps.user.views import LoginUser
 
 urlpatterns = [
     path('', LoginUser.as_view(), name='magazine_home'),

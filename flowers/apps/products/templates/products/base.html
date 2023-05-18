@@ -24,7 +24,7 @@
             </ul>
         </nav> 
         <ul class="header_links">
-            <li><a href="#popup" class="popup-link"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+            <li><a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i></a></li>
             {% if user.is_authenticated %}
                 {% with total_items=cart|length %}
                         {% if cart|length > 0 %}

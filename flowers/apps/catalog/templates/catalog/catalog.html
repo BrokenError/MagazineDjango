@@ -26,7 +26,7 @@
                         <p>{{ i.title }}</p>
                         <p>{{ i.price }} рублей</p>
                         {% if user.is_authenticated %}
-                        <form action="{% url 'cart_add' i.id %}" method="post">
+                        <form action="{% url 'cart_add' i.id %}" method="post" class="product_cart">
                             {{ cart_product_form }}
                             {% csrf_token %}
                             <button class="btn-catalog" type="submit" style='margin-left:30px'>В корзину</button>

@@ -1,7 +1,6 @@
 from django import forms
 from apps.user.models import User
 from .models import Profile
-from django.contrib.auth.forms import SetPasswordForm
 
 
 class SaveDataUser(forms.ModelForm):
