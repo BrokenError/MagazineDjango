@@ -15,7 +15,8 @@ context = {
 
 # TODO duplicate code
 def magazine_catalog(request):
-    context['cat_selected'] = 'Каталог'
+    context['prod'] = Products.objects.all()
+    context['cat_selected'] = 0
     prod = Products.objects.order_by('date_created')
     paginator = Paginator(prod, 21)
     page_number = request.GET.get('page', 1)
@@ -24,41 +25,11 @@ def magazine_catalog(request):
     return render(request, 'catalog/catalog.html', context=context)
 
 
-def catalog_events(request):
-    context['cat_selected'] = 'События'
-    context['prod'] = Products.objects.filter(cat_id=1)
+def show_categories(request, slug):
+    cater = get_object_or_404(Categories, slug=slug)
+    context['prod'] = Products.objects.filter(cat=cater.id)
+    context['cat_selected'] = cater.id
     return render(request, 'catalog/catalog.html', context=context)
-
-
-def catalog_bouquets(request):
-    context['cat_selected'] = 'Букеты'
-    context['prod'] = Products.objects.filter(cat_id=2)
-    return render(request, 'catalog/catalog.html', context=context)
-
-
-def catalog_stuffed_toys(request):
-    context['cat_selected'] = 'Мягкие игрушки'
-    context['prod'] = Products.objects.filter(cat_id=3)
-    return render(request, 'catalog/catalog.html', context=context)
-
-
-def catalog_decor(request):
-    context['cat_selected'] = 'Декор'
-    context['prod'] = Products.objects.filter(cat_id=4)
-    return render(request, 'catalog/catalog.html', context=context)
-
-
-def catalog_other(request):
-    context['cat_selected'] = 'Другое'
-    context['prod'] = Products.objects.filter(cat_id=5)
-    return render(request, 'catalog/catalog.html', context=context)
-
-
-def product_detail(request, prod_id, slug):
-    product = get_object_or_404(Products, id=prod_id, slug=slug)
-    cart_product_form = CartAddProductForm()
-    return render(request, 'cart/detail.html', {'product': product,
-                                                'cart_product_form': cart_product_form})
 
 
 def magazine_search(request):

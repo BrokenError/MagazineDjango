@@ -2,17 +2,17 @@
 {% load static %}
 {% csrf_token %}
 
-{% block title %}{{ cat_selected }}{% endblock %}
+{% block title %}Каталог{% endblock %}
 
 {% block content %}
 <div class="main">
     <div class="categories">
         <ul>
             {% for i in cat %}
-                {% if i.title == cat_selected %}
-                        <a href="{% url i.title %}"><li class="categoies_selected">{{ i.title }}</li></a>
+                {% if i.pk == cat_selected %}
+                    <a href=""><li class="categoies_selected">{{ i.title }}</li></a>
                 {% else %}
-                    <a href="{% url i.title %}"><li>{{ i.title }}</li></a>
+                    <a href="{{ i.get_absolute_url }}"><li>{{ i.title }}</li></a>
                 {% endif %}
             {% endfor %}
         </ul>
