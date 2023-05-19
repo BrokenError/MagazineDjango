@@ -1,0 +1,41 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block title %}Поиск{% endblock %}
+{% block content %}
+    <div class="main" style="gap:20px">
+        <div>
+            <form action="{% url 'search' %}" method="get" class="catalog_search">
+                {% csrf_token %}
+                <input name="q" type="text" placeholder="Поиск...">
+                <button type="submit">Найти</button>
+            </form>
+        </div>
+        <div class="products">
+            {% for i in prod %}
+                {% if i.available %}
+                    <div class="products_case">
+                        <div class="product">
+                            <img style="width: 320px; height: 320px;" src="{{ i.photo.url }}" alt="">
+                            <p>{{ i.title }}</p>
+                            <p>{{ i.price }} рублей</p>
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'cart_add' i.id %}" method="post" class="product_cart">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <button class="btn-catalog" type="submit" style='margin-left:30px'>В корзину</button>
+                            </form>
+                            {% else %}
+                            <a href="#popup" class="popup-link">
+                            <button class="btn-catalog" style='margin-left:30px'>В корзину</button></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% empty %}
+                    <p style="margin: 0 auto;">ЗДЕСЬ ПОКА НИЧЕГО НЕТ</p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -455,6 +455,17 @@ main{
     height: 480px;
 }
 
+.product_cart{
+    display: flex;
+    flex-direction: row;
+    gap:15px;
+}
+
+.product_cart select{
+    max-height: 25px;
+    border: none;
+    background: transparent;
+}
 
 .btn-catalog{
     font-size: 20px;
@@ -599,4 +610,14 @@ main{
     display: flex;
     align-items: center;
     height: 80%;
+}
+
+.catalog_search{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.catalog_search button{
+    padding: 5px 15px;
 }

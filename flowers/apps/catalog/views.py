@@ -1,5 +1,7 @@
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
 
 from apps.cart.forms import CartAddProductForm
 from apps.products.forms import LoginUserForm
@@ -13,7 +15,24 @@ context = {
 }
 
 
-# TODO duplicate code
+class SearchResultView(ListView):
+    model = Products
+    template_name = 'catalog/search.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context['title'] = 'Поиск товара'
+        return context
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query is None:
+            object_list = Products.objects.all()
+        else:
+            object_list = Products.objects.filter(Q(title__icontains=query) or Q(slug__icontains=query))
+        context['prod'] = object_list
+        return context
+
+
 def magazine_catalog(request):
     context['prod'] = Products.objects.all()
     context['cat_selected'] = 0
