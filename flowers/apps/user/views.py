@@ -12,11 +12,9 @@ from apps.products.forms import LoginUserForm, RegisterUserForm
 from .forms import SaveDataUser, SaveDataProfile, AddPhone
 
 context = {
-    'user': '',
     'title_links_user': [{'link': 'user', 'name': 'Главная'},
                          {'link': 'personal', 'name': 'Личные данные'},
                          {'link': 'security', 'name': 'Безопасность и вход'}],
-    'cat_selected': '',
 }
 
 

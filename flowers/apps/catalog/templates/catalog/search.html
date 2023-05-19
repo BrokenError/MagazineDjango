@@ -7,7 +7,7 @@
         <div>
             <form action="{% url 'search' %}" method="get" class="catalog_search">
                 {% csrf_token %}
-                <input name="q" type="text" placeholder="Поиск...">
+                <input name="search_prod" type="text" placeholder="Поиск...">
                 <button type="submit">Найти</button>
             </form>
         </div>

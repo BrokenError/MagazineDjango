@@ -24,7 +24,7 @@ class SearchResultView(ListView):
         return context
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
+        query = self.request.GET.get('search_prod')
         if query is None:
             object_list = Products.objects.all()
         else:
