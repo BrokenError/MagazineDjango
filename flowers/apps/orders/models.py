@@ -5,9 +5,8 @@ from apps.catalog.models import Products
 
 
 class Order(models.Model):
-    id = models.AutoField(primary_key=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    description = models.CharField('Описание', blank=True, max_length=300)
+    description = models.CharField('Описание', blank=True, null=True, max_length=300)
     deliv_address = models.CharField('Адрес доставки', blank=False, max_length=150)
     created = models.DateTimeField('Дата создания', auto_now=True)
     paid = models.BooleanField('Оплачено', default=False)
