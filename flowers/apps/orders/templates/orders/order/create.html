@@ -1,0 +1,40 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Оплата заказа{% endblock %}
+{% block content %}
+<div class="order-style">
+    <h2>Ваш заказ</h2>
+    <div class="order-main">
+    <div class="order-left__head">
+        <h6>Заполните данные для оформления заказа:</h6>
+        <form action="." method="post">
+        {% csrf_token %}
+        <div class="order-form__body">
+            {% for f in form %}
+                <div class="order-form__block">
+                <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
+                {{ f }}
+                </div>
+            {% endfor %}
+        </div>
+            <div class="order-submit__feet">
+            <p>Итого: {{ cart.get_total_price }} ₽</p>
+            <p class="order-form__submit"><input type="submit" value="Продолжить" class="a_button"
+                                                 style="padding: 5px"></p>
+            </div>
+        </form>
+    </div>
+    <div class="order-right__head">
+        <h6>В вашем заказе следующие товары:</h6>
+        <ul class="order-select-prod__head">
+            {% for item in cart %}
+                <li>
+                    {{ item.quantity }} x {{ item.product.title }}
+                    <span>${{ item.total_price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+</div>
+{% endblock %}

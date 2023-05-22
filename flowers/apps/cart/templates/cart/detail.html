@@ -14,7 +14,6 @@
                             <a href=""><img src="{% if product.photo %}{{ product.photo.url }}{% else %}
                             {% static 'cart/img/no_image.png' %}{% endif %}" class="cart_img" alt=""></a>
                         </div>
-
                         <div class="cart_item_text">
                             <p style="font-size: 24px">{{ product.title }}</p>
                             <form action="{% url 'cart_add' product.id %}" method="post">
@@ -39,10 +38,10 @@
             </div>
             <div class="cart_buy">
                 <div class="cart_buy-right">
-                    <p>Итого:</p> 
+                    <p>Итого:</p>
                     <p>{{ cart.get_total_price }} ₽</p>
                 </div>
-                <a href="#" class="a_button cart_buy-left">Оформить заказ</a>
+                <a href="{% url 'orders:order_create' %}" class="a_button cart_buy-left">Оформить заказ</a>
             </div>
         </div>
     {% else %}

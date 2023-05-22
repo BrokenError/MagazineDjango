@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'apps.catalog',
     'apps.user',
     'apps.cart',
+    'apps.orders',
     'phone_verify',
     'django.contrib.admin',
     'django.contrib.auth',
