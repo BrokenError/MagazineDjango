@@ -1,5 +1,6 @@
 from django import forms
 
+# TODO can be more interesting
 PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 25)]
 
 

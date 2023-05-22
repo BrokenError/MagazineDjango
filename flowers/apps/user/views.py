@@ -8,8 +8,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
-from apps.products.forms import LoginUserForm, RegisterUserForm
-from .forms import SaveDataUser, SaveDataProfile, AddPhone
+from apps.products.forms import LoginUserForm
+from .forms import SaveDataUser, SaveDataProfile, AddPhone, RegisterUserForm
 
 context = {
     'title_links_user': [{'link': 'user', 'name': 'Главная'},

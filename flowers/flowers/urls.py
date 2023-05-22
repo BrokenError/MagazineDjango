@@ -3,6 +3,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+app_name = 'main_app'
+
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('cart/', include('apps.cart.urls')),
