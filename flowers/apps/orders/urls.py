@@ -1,5 +1,5 @@
 from django.conf.urls import url
 
-from . import views
+from apps.orders.views import order_create
 
-urlpatterns = [url(r'^create/$', views.order_create, name='order_create'), ]
+urlpatterns = [url(r'^create/$', order_create, name='order_create'), ]

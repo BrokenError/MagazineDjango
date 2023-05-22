@@ -660,7 +660,7 @@ main{
     gap:10px;
 }
 
-#id_email, #id_first_name, #id_last_name{
+.order-form__block input{
     border: none;
     border-bottom: black 1px solid;
 }

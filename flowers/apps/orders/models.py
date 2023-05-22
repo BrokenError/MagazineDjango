@@ -1,11 +1,14 @@
+from django.contrib.auth.models import User
 from django.db import models
+
 from apps.catalog.models import Products
 
 
 class Order(models.Model):
-    first_name = models.CharField('Фамилия', max_length=50)
-    last_name = models.CharField('Имя', max_length=70)
-    email = models.EmailField('Почта')
+    id = models.AutoField(primary_key=True, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.CharField('Описание', blank=True, max_length=300)
+    deliv_address = models.CharField('Адрес доставки', blank=False, max_length=150)
     created = models.DateTimeField('Дата создания', auto_now=True)
     paid = models.BooleanField('Оплачено', default=False)
 
@@ -16,12 +19,12 @@ class Order(models.Model):
         return 'Order {}'.format(self.id)
 
     def get_total_cost(self):
-        return sum(item.get_cost() for item in self.заказ.all())
+        return sum(item.get_cost() for item in self.Заказ.all())
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, related_name='Заказ', blank=True, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, related_name='Товар', blank=True, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, related_name='Заказ', on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, related_name='Товар', on_delete=models.CASCADE)
     price = models.DecimalField('Цена', max_digits=8, decimal_places=2)
     quantity = models.PositiveIntegerField('Количество', default=1)
 

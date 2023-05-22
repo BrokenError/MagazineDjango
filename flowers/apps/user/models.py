@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Profile(models.Model):
-    username = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
+    username = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField('О себе', null=True, max_length=1000, blank=True)
     birth_date = models.DateField('День рождение', null=True, blank=True)
     profile_img = models.ImageField('Фото профиля', null=True, blank=True, upload_to="users/profile/")

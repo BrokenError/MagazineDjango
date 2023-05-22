@@ -10,14 +10,21 @@ def order_create(request):
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
-            order = form.save(request.POST)
+            obj = Order()
+            obj.user = User.objects.get(pk=request.user.id)
+            obj.description = form.cleaned_data['description']
+            obj.deliv_address = form.cleaned_data['deliv_address']
+            obj.paid = form.cleaned_data['paid']
+            obj.save()
+
             for item in cart:
-                OrderItem.objects.create(order=order,
-                                         product=item['product'],
-                                         price=item['price'],
-                                         quantity=item['quantity'])
+                OrderItem.objects.create(
+                    order=obj,
+                    product=item['product'],
+                    price=item['price'],
+                    quantity=item['quantity'])
             cart.clear()
-            return render(request, 'orders/order/creation.html', {'order': order})
+            return render(request, 'orders/order/creation.html', {'order': obj})
     else:
         form = OrderCreateForm()
     return render(request, 'orders/order/create.html', {'cart': cart, 'form': form})

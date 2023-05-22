@@ -1,9 +1,7 @@
 from django import forms
 
-from apps.orders.models import Order
 
-
-class OrderCreateForm(forms.ModelForm):
-    class Meta:
-        model = Order
-        fields = ['first_name', 'last_name', 'email', 'paid']
+class OrderCreateForm(forms.Form):
+    description = forms.CharField(label='Комментарий')
+    deliv_address = forms.CharField(label='Адрес доставки')
+    paid = forms.BooleanField(label='Оплачено')
