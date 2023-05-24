@@ -49,7 +49,3 @@ def show_categories(request, slug):
     context['prod'] = Products.objects.filter(cat=cater.id)
     context['cat_selected'] = cater.id
     return render(request, 'catalog/catalog.html', context=context)
-
-
-def magazine_search(request):
-    return render(request, 'catalog/catalog.html', context=context)

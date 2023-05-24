@@ -480,7 +480,7 @@ main{
 
 
 .cart{
-    border-radius: 3%;
+    border-radius: 30px;
     padding: 35px 75px 5px;
     background-color: rgba(234, 241, 227, 0.71);
     box-shadow: 0 0 6px rgba(217, 222, 211, 0.51);
@@ -691,4 +691,51 @@ main{
     flex-direction: row;
     margin-top: 30px;
     gap: 20px;
+}
+
+
+/*БЛОК С ИСТОРИЕЙ ЗАКАЗОВ*/
+
+.cart-main__blocks{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.cart-nav__menu{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-nav__menu li{
+    text-align: left;
+    padding: 10px;
+}
+
+.cart-nav-block__menu:hover{
+    box-shadow: 0 0 6px rgba(217, 222, 211, 0.51);
+    border-radius: 12px;
+    transform: scale(1.05);
+    transition: all 0.8s ease 0s;
+}
+
+.hist-table{
+    max-width: 900px;
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(217, 222, 211, 0.91);
+}
+
+td a{
+    display: block;
+}
+
+td a:hover{
+    color: #DD914B;
+    box-shadow: 0 0 5px rgba(217, 222, 211, 0.52);
+}
+
+th, td{
+    padding: 10px;
 }

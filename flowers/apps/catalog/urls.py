@@ -6,5 +6,4 @@ urlpatterns = [
     path('', views.magazine_catalog, name='magazine_catalog'),
     path('search/', views.SearchResultView.as_view(), name='search'),
     path('<slug:slug>/', views.show_categories, name='category'),
-    path('magazine_search/', views.magazine_search, name='magazine_search')
 ]

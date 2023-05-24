@@ -5,6 +5,11 @@
 
 {% block content %}
     {% if cart|length > 0 %}
+    <div class="cart-main__blocks">
+        <ul class="user-links cart-nav__menu">
+            <a href=""><li class="categoies_selected">Корзина</li></a>
+            <a href="{% url 'history' %}"><li>История заказов</li></a>
+        </ul>
         <div class="cart">
             <div class="cart-items">
                 {% for item in cart %}
@@ -21,13 +26,15 @@
                                 <div class="cart_item_form">
                                     <div class="cart_item_price">
                                         <div class="cart_count-items">
-                                            <p>Кол-во</p>{{ item.update_quantity_form.quantity }}{{ item.update_quantity_form.update }}
+                                            <p>Кол-во</p>{{ item.update_quantity_form.quantity }}
+                                            {{ item.update_quantity_form.update }}
                                         </div>
                                         <p>{{ item.total_price }} ₽</p>
                                     </div>
                                     <div class="cart_item-delete-update">
                                         <input type="submit" value="Обновить">
-                                        <a href="{% url 'cart_remove' product.id %}" class="a_button submit">Удалить</a>
+                                        <a href="{% url 'cart_remove' product.id %}" class="a_button submit">
+                                            Удалить</a>
                                     </div>
                                 </div>
                             </form>
@@ -44,9 +51,11 @@
                 <a href="{% url 'orders:order_create' %}" class="a_button cart_buy-left">Оформить заказ</a>
             </div>
         </div>
-    {% else %}
-    <div class="cart_zero-items">
-        <p>Корзина пуста</p>
     </div>
+
+    {% else %}
+        <div class="cart_zero-items">
+            <p>Корзина пуста</p>
+        </div>
     {% endif %}
 {% endblock %}

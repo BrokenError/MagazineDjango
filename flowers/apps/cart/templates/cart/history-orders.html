@@ -1,0 +1,44 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block title %}История заказов{% endblock %}
+
+{% block content %}
+    <div class="cart-main__blocks">
+        <ul class="user-links cart-nav__menu">
+            <a href="{% url 'cart_detail' %}"><li>Корзина</li></a>
+            <a href=""><li class="categoies_selected">История заказов</li></a>
+        </ul>
+        <div class="hist-table">
+        <table>
+            <tr>
+                <th>Номер заказа</th>
+                <th>Дата оформления</th>
+                <th>Описание</th>
+                <th>Адрес доставки</th>
+                <th>Оплата</th>
+                <th>Товары</th>
+            </tr>
+            <tr class="hist-more-info">
+        {% for i in orders %}
+                <td><a href="." id="{{ i.id }}"><button>{{ i.id }}</button></a></td>
+                <td><a href="." id="{{ i.id }}">{{ i.created }}</a></td>
+                <td><a href="." id="{{ i.id }}">{{ i.description }}</a></td>
+                <td><a href="." id="{{ i.id }}">{{ i.deliv_address }}</a></td>
+                <td><a href="." id="{{ i.id }}">
+                    {% if i.paid %}Оплачен
+                    {% else %}Не оплачен
+                    {% endif %}
+                    </a>
+                </td>
+                <td style="display: block">
+                    {% for p in i.linkorder.all %}
+                        {{ p }}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+{% endblock %}
